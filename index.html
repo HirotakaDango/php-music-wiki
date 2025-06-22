@@ -10,13 +10,11 @@
     <meta name="author" content="Hirotaka Dango">
     <meta property="og:title" content="PHP Music Documentation">
     <meta property="og:description" content="A self-hosted, modern, elegant Music inspired by YouTube Music.">
-    <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='100%' height='100%' rx='24' fill='%23121212'/><g><ellipse cx='64' cy='80' rx='40' ry='28' fill='red' fill-opacity='.13'/><ellipse cx='64' cy='80' rx='22' ry='15' fill='red' fill-opacity='.27'/><ellipse cx='64' cy='80' rx='8' ry='6' fill='red' fill-opacity='.55'/></g><g><rect x='34' y='28' width='60' height='50' rx='8' fill='%23fff' fill-opacity='.06' stroke='red' stroke-width='3.5'/><ellipse cx='64' cy='54' rx='14' ry='12' fill='red' fill-opacity='.73'/><ellipse cx='64' cy='54' rx='6' ry='5' fill='white' fill-opacity='.92'/></g><g><rect x='54' y='38' width='20' height='34' rx='3' fill='%23fff' fill-opacity='.13'/></g><g><rect x='62' y='28' width='4' height='-10' rx='2' fill='red'/></g></svg>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PHP Music Documentation">
     <meta name="twitter:description" content="A self-hosted, modern, elegant Music inspired by YouTube Music.">
-    <meta name="twitter:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='100%' height='100%' rx='24' fill='%23121212'/><g><ellipse cx='64' cy='80' rx='40' ry='28' fill='red' fill-opacity='.13'/><ellipse cx='64' cy='80' rx='22' ry='15' fill='red' fill-opacity='.27'/><ellipse cx='64' cy='80' rx='8' ry='6' fill='red' fill-opacity='.55'/></g><g><rect x='34' y='28' width='60' height='50' rx='8' fill='%23fff' fill-opacity='.06' stroke='red' stroke-width='3.5'/><ellipse cx='64' cy='54' rx='14' ry='12' fill='red' fill-opacity='.73'/><ellipse cx='64' cy='54' rx='6' ry='5' fill='white' fill-opacity='.92'/></g><g><rect x='54' y='38' width='20' height='34' rx='3' fill='%23fff' fill-opacity='.13'/></g><g><rect x='62' y='28' width='4' height='-10' rx='2' fill='red'/></g></svg>">
     <!-- Favicon SVG (inlined for meta only, not as visible favicon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='100%' height='100%' rx='24' fill='%23121212'/><g><ellipse cx='64' cy='80' rx='40' ry='28' fill='red' fill-opacity='.13'/><ellipse cx='64' cy='80' rx='22' ry='15' fill='red' fill-opacity='.27'/><ellipse cx='64' cy='80' rx='8' ry='6' fill='red' fill-opacity='.55'/></g><g><rect x='34' y='28' width='60' height='50' rx='8' fill='%23fff' fill-opacity='.06' stroke='red' stroke-width='3.5'/><ellipse cx='64' cy='54' rx='14' ry='12' fill='red' fill-opacity='.73'/><ellipse cx='64' cy='54' rx='6' ry='5' fill='white' fill-opacity='.92'/></g><g><rect x='54' y='38' width='20' height='34' rx='3' fill='%23fff' fill-opacity='.13'/></g><g><rect x='62' y='28' width='4' height='-10' rx='2' fill='red'/></g></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='100%' height='100%' rx='24' fill='%23121212'/><g><ellipse cx='64' cy='64' rx='40' ry='40' fill='%23ff0000'/><rect x='56' y='40' width='16' height='48' rx='8' fill='white'/></g></svg>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -319,7 +317,7 @@
       <div class="logo text-wrap d-flex align-items-center justify-content-between">
         <span><i class="bi bi-boombox-fill"></i> PHP<span>Music</span> <span class="d-none d-md-inline">Docs</span></span>
         <!-- Hamburger toggle only on mobile -->
-        <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#docNavCollapse" aria-controls="docNavCollapse" aria-expanded="false" aria-label="Toggle navigation" style="background:none;border:none;color:var(--ytm-primary-text)">
+        <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#docNavCollapse" aria-controls="docNavCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <i class="bi bi-list" style="font-size:2rem"></i>
         </button>
       </div>
@@ -345,9 +343,9 @@
     <div class="doc-content text-wrap">
       <div class="doc-header text-wrap">
         <h1 class="text-wrap">
-          <i class="bi bi-boombox-fill text-danger"></i> PHP Music <span class="badge badge-ytm ms-2">v1.2</span>
+          <i class="bi bi-boombox-fill text-danger"></i> PHP Music <span class="badge badge-ytm ms-2">v1.8</span>
         </h1>
-        <div class="text-secondary mt-2 fs-5 text-wrap">A self-hosted, modern, simple and fast Music inspired by YouTube Music.</div>
+        <div class="text-secondary mt-2 fs-5 text-wrap">A self-hosted, modern, simple and fast music platform inspired by YouTube Music.</div>
       </div>
       <div class="doc-main text-wrap">
         <img class="w-100 object-fit-contain rounded" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/1.png">
@@ -357,7 +355,7 @@
         <div class="section-title text-wrap"><i class="bi bi-house-fill"></i> Introduction</div>
         <div class="callout text-wrap">
           <i class="bi bi-info-circle-fill"></i>
-          <b>PHP Music</b> is an open-source, web-based Music designed for self-hosting. Enjoy your music library from any device, with a beautiful dark UI and responsive design inspired by YouTube Music.
+          <b>PHP Music</b> is an open-source, web-based, self-hosted music platform. Enjoy your music library anywhere, with a beautiful dark UI and responsive design inspired by YouTube Music. Features include user accounts, uploads, playlists, favorites, PWA, admin tools, and more—all in a single PHP file!
         </div>
         <ul class="text-wrap">
           <li>🎵 <b>Upload, organize, and play</b> your music from anywhere.</li>
@@ -374,19 +372,19 @@
           <div class="col text-wrap">
             <div class="card doc-card h-100 text-wrap">
               <div class="card-header text-wrap"><i class="bi bi-music-note-list"></i> Music Management</div>
-              <div class="card-body text-wrap">Upload, edit, and delete your own songs. Organize by artist, album, or genre. Create favorites and playlists.</div>
+              <div class="card-body text-wrap">Upload, edit, and delete your own songs. Organize by artist, album, or genre. Create favorites and playlists. Drag and drop to reorder lists.</div>
             </div>
           </div>
           <div class="col text-wrap">
             <div class="card doc-card h-100 text-wrap">
               <div class="card-header text-wrap"><i class="bi bi-person-badge"></i> User Accounts</div>
-              <div class="card-body text-wrap">Register as a user, manage your profile, change your password, and upload music (with verification).</div>
+              <div class="card-body text-wrap">Register as a user, manage your profile, set a profile picture, change your password, and upload music (with verification).</div>
             </div>
           </div>
           <div class="col text-wrap">
             <div class="card doc-card h-100 text-wrap">
               <div class="card-header text-wrap"><i class="bi bi-cloud-arrow-up"></i> Uploads & Limits</div>
-              <div class="card-body text-wrap">Upload up to <b>5 songs per day</b>, with support for MP3, FLAC, M4A, OGG, and more. <span class="badge bg-info ms-1">Admin can verify users for upload.</span></div>
+              <div class="card-body text-wrap">Upload up to <b>10 songs per day</b> (default, configurable). Supported: MP3, FLAC, M4A, OGG, WAV, and more. <span class="badge bg-info ms-1">Admin must verify users for uploads.</span></div>
             </div>
           </div>
           <div class="col text-wrap">
@@ -398,13 +396,19 @@
           <div class="col text-wrap">
             <div class="card doc-card h-100 text-wrap">
               <div class="card-header text-wrap"><i class="bi bi-gear"></i> Admin Panel</div>
-              <div class="card-body text-wrap">Manage users, verify accounts, and monitor uploads from a secure admin dashboard.</div>
+              <div class="card-body text-wrap">Manage users, verify/unverify accounts, and monitor uploads from a secure admin dashboard. Toggle user verification and see daily upload stats.</div>
             </div>
           </div>
           <div class="col text-wrap">
             <div class="card doc-card h-100 text-wrap">
               <div class="card-header text-wrap"><i class="bi bi-phone"></i> PWA Support</div>
-              <div class="card-body text-wrap">Add to Home Screen on your mobile device for an app-like experience. Works offline!</div>
+              <div class="card-body text-wrap">Add to Home Screen on your device for an app-like experience. Works offline (static assets, cached content, and player UI).</div>
+            </div>
+          </div>
+          <div class="col text-wrap">
+            <div class="card doc-card h-100 text-wrap">
+              <div class="card-header text-wrap"><i class="bi bi-bar-chart-steps"></i> History & Recommendations</div>
+              <div class="card-body text-wrap">Tracks recent plays and suggests music based on your listening history and favorites. "For You" section with personalized shelves.</div>
             </div>
           </div>
         </div>
@@ -420,7 +424,7 @@
             <ul class="text-wrap">
               <li>PHP 7.4+ (<code>pdo_sqlite</code>, <code>gd</code>)</li>
               <li>Web server (Apache/Nginx) or PHP built-in server</li>
-              <li>getID3 library (included as subfolder <code>getid3/</code>)</li>
+              <li>getID3 library (included as <code>getid3/</code> folder)</li>
             </ul>
           </li>
           <li><b>Set permissions:</b>
@@ -436,7 +440,7 @@
         </ol>
         <div class="callout text-wrap">
           <i class="bi bi-exclamation-triangle-fill"></i>
-          <b>Security Tip:</b> Change the <code>ADMIN_PASSWORD</code> in <code>index.php</code> for production!
+          <b>Security Tip:</b> Change the <code>ADMIN_PASSWORD</code> in <code>index.php</code> before going public!
         </div>
 
         <!-- Usage -->
@@ -446,30 +450,26 @@
           <b>As a user you can:</b>
           <ul class="text-wrap">
             <li>Register with your email & artist name</li>
-            <li>Wait for admin verification if upload is needed</li>
+            <li>Wait for admin verification to upload music</li>
             <li>Upload music (MP3, FLAC, etc.), edit genres, and create playlists</li>
-            <li>Create, reorder, and share playlists</li>
+            <li>Create, reorder (drag & drop), and share playlists</li>
             <li>Mark favorites, search by title, artist, album, or genre</li>
+            <li>Set a profile picture (WebP processed)</li>
           </ul>
         </div>
         <div class="mb-3 text-wrap">
           <b>Music Playback:</b>
           <ul class="text-wrap">
-            <li>Click a song to play, use player bar for controls (play/pause/skip/shuffle/repeat/volume)</li>
+            <li>Click a song to play; use the player bar for controls (play/pause/skip/shuffle/repeat/volume)</li>
             <li>Supports background playback (PWA + mobile)</li>
-            <li>Drag and drop to reorder favorites/playlists</li>
-          </ul>
-        </div>
-        <div class="mb-3 text-wrap">
-          <b>Share music & playlists:</b>
-          <ul class="text-wrap">
-            <li>Click the <i class="bi bi-share-fill"></i> share button on any playlist, album, artist, or song</li>
-            <li>Shareable links work for public playlists, albums, and songs</li>
+            <li>Drag and drop to reorder favorites and playlists</li>
+            <li>Sharing: click <i class="bi bi-share-fill"></i> to copy/share links for songs, albums, artists, or playlists</li>
+            <li>Stream, download, and view song metadata</li>
           </ul>
         </div>
         <div class="callout text-wrap">
           <i class="bi bi-gear-wide-connected"></i>
-          For advanced usage, see the <a href="#api">API endpoints</a> below.
+          For advanced usage and integrations, see the <a href="#api">API endpoints</a> below.
         </div>
 
         <!-- Admin Panel -->
@@ -477,14 +477,14 @@
         <div class="section-title text-wrap"><i class="bi bi-person-gear"></i> Admin Panel</div>
         <ul class="text-wrap">
           <li>Access via <code>?access=admin</code> (e.g., <code>http://localhost:8080/?access=admin</code>)</li>
-          <li>Login with admin password (default: <code>admin</code> - <b>change this!</b>)</li>
+          <li>Login with admin password (default: <code>admin</code> – <b>change this!</b>)</li>
           <li>View and verify users, toggle their upload rights</li>
           <li>Paginate users, see upload counts and last upload date</li>
           <li>Log out securely with the <i class="bi bi-box-arrow-left"></i> button</li>
         </ul>
         <div class="callout text-wrap">
           <i class="bi bi-lock-fill"></i>
-          Only admins (server owners) can verify users and manage accounts.
+          Only admins (server owners) can verify users and manage accounts. User verification is required to upload music.
         </div>
 
         <!-- API -->
@@ -513,9 +513,19 @@
                     <td class="text-wrap">Login (<code>email</code>, <code>password</code>)</td>
                   </tr>
                   <tr>
+                    <td class="text-wrap"><code>?action=get_session</code></td>
+                    <td class="text-wrap">GET</td>
+                    <td class="text-wrap">Get current session status and user info</td>
+                  </tr>
+                  <tr>
                     <td class="text-wrap"><code>?action=upload_song</code></td>
                     <td class="text-wrap">POST (form-data)</td>
-                    <td class="text-wrap">Upload a song file (verified users only)</td>
+                    <td class="text-wrap">Upload a song file (verified users only, MP3/FLAC/M4A/OGG/WAV, daily limit applies)</td>
+                  </tr>
+                  <tr>
+                    <td class="text-wrap"><code>?action=delete_song</code></td>
+                    <td class="text-wrap">POST (json)</td>
+                    <td class="text-wrap">Delete a song (owner or admin only)</td>
                   </tr>
                   <tr>
                     <td class="text-wrap"><code>?action=get_songs</code></td>
@@ -525,7 +535,7 @@
                   <tr>
                     <td class="text-wrap"><code>?action=toggle_favorite</code></td>
                     <td class="text-wrap">POST (json)</td>
-                    <td class="text-wrap">Add/remove favorite song</td>
+                    <td class="text-wrap">Add or remove favorite song</td>
                   </tr>
                   <tr>
                     <td class="text-wrap"><code>?action=create_playlist</code></td>
@@ -538,9 +548,24 @@
                     <td class="text-wrap">List your playlists</td>
                   </tr>
                   <tr>
+                    <td class="text-wrap"><code>?action=get_playlist_songs&public_id=ID</code></td>
+                    <td class="text-wrap">GET</td>
+                    <td class="text-wrap">Get songs in a playlist</td>
+                  </tr>
+                  <tr>
                     <td class="text-wrap"><code>?action=get_stream&id=SONG_ID</code></td>
                     <td class="text-wrap">GET</td>
-                    <td class="text-wrap">Stream audio file</td>
+                    <td class="text-wrap">Stream audio file (with HTTP Range support)</td>
+                  </tr>
+                  <tr>
+                    <td class="text-wrap"><code>?action=search&q=QUERY</code></td>
+                    <td class="text-wrap">GET</td>
+                    <td class="text-wrap">Search songs by title, artist, or album</td>
+                  </tr>
+                  <tr>
+                    <td class="text-wrap"><code>?action=get_recommendations</code></td>
+                    <td class="text-wrap">GET</td>
+                    <td class="text-wrap">Get personalized recommendations ("For You")</td>
                   </tr>
                 </tbody>
               </table>
@@ -589,7 +614,7 @@
                 </h2>
                 <div id="faq3" class="accordion-collapse collapse text-wrap" data-bs-parent="#faqAccordion">
                   <div class="accordion-body text-wrap">
-                    Register an account, then ask your site admin to verify your account for uploads.
+                    Register an account, then ask your site admin to verify your account for uploads. Admin can toggle verification from the admin panel.
                   </div>
                 </div>
               </div>
@@ -605,6 +630,18 @@
                   </div>
                 </div>
               </div>
+              <div class="accordion-item bg-transparent border border-secondary text-wrap">
+                <h2 class="accordion-header text-wrap" id="faq5-h">
+                  <button class="accordion-button bg-dark text-white collapsed text-wrap" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    How do I update the library from local files?
+                  </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse text-wrap" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-wrap">
+                    Use the "Scan All" button or visit <code>?action=full_scan</code> to resync the database with your music folder using getID3.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -613,9 +650,9 @@
         <a id="pwa"></a>
         <div class="section-title text-wrap"><i class="bi bi-phone"></i> Progressive Web App (PWA)</div>
         <ul class="text-wrap">
-          <li>Automatically provides <code>manifest.json</code> and <code>service-worker</code> for offline support</li>
+          <li>Automatically provides <code>manifest.json</code> and <code>service-worker</code> for offline support (<code>?pwa=manifest</code>, <code>?pwa=sw</code>)</li>
           <li>Installable on mobile and desktop (works offline for static assets and recent songs)</li>
-          <li>Customizable app icon and theme color</li>
+          <li>Customizable app icon and theme color (<code>?action=get_app_icon</code>)</li>
           <li>No extra configuration needed!</li>
         </ul>
         <div class="mb-3 text-wrap"><b>Tip:</b> If you update the app, users may need to refresh for cache updates.</div>
