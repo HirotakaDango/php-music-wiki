@@ -401,19 +401,19 @@
           <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/3.png" alt="Screenshot 3">
           <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/4.png" alt="Screenshot 4">
         </div>
-        <a class="btn btn-light mt-3 mb-2 fw-bold">Try out the demo <i class="bi bi-box-arrow-up-right"></i></a>
-        <div class="w-100 rounded-4" style="height: 75vh; overflow: hidden;">
+        <a class="btn btn-light mt-3 mb-2 fw-bold" href="https://phpmusic.rf.gd" target="_blank">Try out the demo <i class="bi bi-box-arrow-up-right"></i></a>
+        <div class="w-100 rounded-4 mt-3" style="height: 75vh; overflow: hidden;">
           <iframe style="width: 125%; height: 93.75vh; transform: scale(0.8); transform-origin: top left; border: none;" src="https://demo.webfuse.com/+iframetest/?url=https%3A%2F%2Fphpmusic.rf.gd"></iframe>
         </div>        
         <a id="introduction"></a>
         <div class="section-title"><i class="bi bi-house-fill"></i> Introduction</div>
         <div class="callout">
           <i class="bi bi-info-circle-fill"></i>
-          <b>PHP Music</b> is an open-source, web-based, self-hosted music platform contained entirely within <code>index.php</code>. By utilizing an embedded SQLite database (<code>music.db</code>), it offers a seamless deployment experience. It boasts a beautiful dark UI inspired by YouTube Music, complete with user accounts, metadata editing, PWA support, and extensive social sharing functionality.
+          <b>PHP Music</b> is an open-source, web-based, self-hosted music platform contained entirely within <code>index.php</code>. By utilizing an embedded SQLite database (<code>music.db</code>), it offers a seamless deployment experience. It boasts a beautiful dark UI inspired by YouTube Music, complete with user accounts, metadata editing, PWA support, dynamic playlists, auto-generated mixes, and extensive social sharing functionality.
         </div>
         <ul>
           <li>🎵 <b>Scan & Play:</b> Recursively scans your directory for <code>mp3</code>, <code>m4a</code>, <code>flac</code>, <code>ogg</code>, and <code>wav</code> files.</li>
-          <li>🔒 <b>User Accounts:</b> Secure registration, profile management, stats tracking, and upload quotas.</li>
+          <li>🔒 <b>User Accounts:</b> Secure registration, profile management, backup key restore features, and upload quotas.</li>
           <li>📱 <b>Progressive Web App (PWA):</b> Dynamic Service Worker caches assets for offline browsing.</li>
           <li>✏️ <b>Metadata Editor:</b> Edit ID3 tags (Title, Artist, Album, Genre, Lyrics) and Cover Art directly.</li>
           <li>🔗 <b>Social Ecosystem:</b> Follow artists, copy playlists, and share direct links instantly.</li>
@@ -441,8 +441,20 @@
           </div>
           <div class="col">
             <div class="card doc-card h-100">
+              <div class="card-header"><i class="bi bi-cloud-arrow-down"></i> Playlist Downloader</div>
+              <div class="card-body">Built-in sequential downloader interface. Batch download entire playlists to your local device with real-time logging, or grab single tracks instantly.</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
               <div class="card-header"><i class="bi bi-cloud-upload"></i> Protected Uploads</div>
               <div class="card-body">Upload multiple songs simultaneously. Features a daily limit (default: 10 songs/day, resets at midnight) and requires explicit admin verification.</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-header"><i class="bi bi-shield-lock"></i> Account Recovery</div>
+              <div class="card-body">Keep your data safe with advanced account management. Generate backup keys to wipe your credentials while preserving your music data, allowing seamless account restoration later.</div>
             </div>
           </div>
           <div class="col">
@@ -454,7 +466,7 @@
           <div class="col">
             <div class="card doc-card h-100">
               <div class="card-header"><i class="bi bi-magic"></i> Smart Recommendations</div>
-              <div class="card-body">The "For You" tab generates personalized shelves based on your listening history (logs play after 30 seconds), top genres, and favorite artists.</div>
+              <div class="card-body">The "For You" tab generates personalized shelves and auto-mixes based on your listening history (logs play after 30 seconds), top genres, and followed artists.</div>
             </div>
           </div>
         </div>
@@ -494,8 +506,9 @@ cd PHP-Music</code></pre>
           <li><b>Accounts & Verification:</b> Registering an account allows you to track history, save favorites, and create playlists. To upload music, an admin must toggle your verification status to "yes".</li>
           <li><b>Playback & Media Keys:</b> The player utilizes the browser's <code>Media Session API</code>. You can control playback in the background using your keyboard media keys or mobile lock screen. Holding the "Next" or "Previous" buttons on the UI skips forward/backward by 5 seconds.</li>
           <li><b>Playlists & Reordering:</b> Inside any playlist or your Favorites tab (when sorted by "My Order"), simply click and drag a song to reposition it. The new order is immediately saved to the database.</li>
-          <li><b>Import/Export:</b> You can backup your playlists and favorites to a portable JSON file. The importer will match songs based on Title and Artist, or fallback to the exact filename.</li>
+          <li><b>Import/Export & Downloading:</b> You can backup your playlists and favorites to a portable JSON file. You can also use the integrated <b>Downloader</b> tool to sequentially download an entire playlist directly to your hard drive.</li>
           <li><b>Sharing:</b> Click the share icon <i class="bi bi-share-fill"></i> on an album, artist, or playlist. PHP Music generates direct query parameters (e.g., <code>?share_type=album&album_name=...</code>) that launch directly into that specific view for anyone with the link.</li>
+          <li><b>App Cache:</b> If the UI updates but you see old data, use the "Clear Cache" button in the sidebar. This wipes the IndexedDB app version cache and unregisters the Service Worker dynamically.</li>
         </ul>
         <a id="technical"></a>
         <div class="section-title"><i class="bi bi-cpu"></i> How It Works</div>
@@ -508,6 +521,7 @@ cd PHP-Music</code></pre>
               <li><code>music</code>: Cached metadata (Title, Album, Genre, Duration, Bitrate) and embedded album arts (WebP blobs).</li>
               <li><code>favorites</code> & <code>playlist_songs</code>: Pivot tables handling user relations and manual <code>sort_order</code>.</li>
               <li><code>history</code> & <code>play_counts</code>: Logs exact timestamps of playback (triggered after 30 seconds of listening) to fuel the recommendation engine.</li>
+              <li><code>follows</code>: Tracks user-to-artist and user-to-user following relationships.</li>
             </ul>
           </li>
           <li><b>Caching & PWA:</b> A Service Worker (<code>?pwa=sw</code>) caches static assets (Bootstrap, Fonts, HTML payload) using a Cache-First strategy. API calls and audio streams bypass the Service Worker to guarantee live data and HTTP Range support.</li>
@@ -517,8 +531,9 @@ cd PHP-Music</code></pre>
         <div class="section-title"><i class="bi bi-person-gear"></i> Admin Panel</div>
         <p>Access the administrative dashboard by appending <code>?access=admin</code> to your URL. Log in using the admin password.</p>
         <ul>
-          <li><b>User Management:</b> View a paginated list of all registered users.</li>
+          <li><b>User Management:</b> View a paginated list (20 users/page) of all registered users.</li>
           <li><b>Verification:</b> Toggle the verification status of users. Unverified users cannot bypass the daily upload restriction.</li>
+          <li><b>Ban System:</b> Suspend malicious users immediately. Banned users are completely locked out of the application.</li>
           <li><b>Analytics:</b> Monitor the <code>Last Upload Date</code> and <code>Daily Upload Count</code> of each user to prevent abuse.</li>
           <li><b>The "Music Library" User:</b> Files scanned locally via "Scan All" are automatically assigned to a hidden system user named "Music Library" (ID is dynamically assigned).</li>
         </ul>
@@ -544,6 +559,16 @@ cd PHP-Music</code></pre>
                 <td><code>register</code> / <code>login</code></td>
                 <td>POST</td>
                 <td>Handles authentication. Requires JSON payload (email, password).</td>
+              </tr>
+              <tr>
+                <td><code>restore_account</code></td>
+                <td>POST</td>
+                <td>Restores an account mapping using a generated backup key.</td>
+              </tr>
+              <tr>
+                <td><code>delete_account_keep_data</code></td>
+                <td>GET</td>
+                <td>Wipes user credentials and email, but keeps user data and generates a backup key.</td>
               </tr>
               <tr>
                 <td><code>upload_profile_picture</code></td>
@@ -578,12 +603,17 @@ cd PHP-Music</code></pre>
               <tr>
                 <td><code>get_recommendations</code></td>
                 <td>GET</td>
-                <td>Generates "For You" shelves based on <code>play_counts</code> and <code>history</code>.</td>
+                <td>Generates "For You" shelves based on <code>play_counts</code>, <code>history</code>, and <code>follows</code>.</td>
               </tr>
               <tr>
                 <td><code>log_play</code></td>
                 <td>POST</td>
                 <td>Logs a playback event to the user's history array.</td>
+              </tr>
+              <tr>
+                <td><code>clear_history</code></td>
+                <td>GET</td>
+                <td>Wipes all play history and play counts for the logged-in user.</td>
               </tr>
               <tr>
                 <td><code>toggle_favorite</code></td>
@@ -611,14 +641,19 @@ cd PHP-Music</code></pre>
                 <td>Clones another user's public playlist into the active user's account.</td>
               </tr>
               <tr>
-                <td><code>export_playlist</code></td>
+                <td><code>export_playlist</code> / <code>export_favorites</code></td>
                 <td>GET</td>
-                <td>Generates a downloadable JSON representation of a playlist.</td>
+                <td>Generates a downloadable JSON representation of a playlist or favorites.</td>
               </tr>
               <tr>
-                <td><code>import_playlist</code></td>
+                <td><code>import_playlist</code> / <code>import_favorites</code></td>
                 <td>POST</td>
-                <td>Parses an uploaded JSON file, matches DB files, and builds a new playlist.</td>
+                <td>Parses an uploaded JSON file, matches DB files, and builds a new playlist or favorites list.</td>
+              </tr>
+              <tr>
+                <td><code>download_song</code></td>
+                <td>GET</td>
+                <td>Downloads the specific song audio file as an attachment.</td>
               </tr>
               <tr>
                 <td><code>get_stream</code></td>
