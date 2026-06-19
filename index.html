@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PHP Music Documentation</title>
     <meta name="theme-color" content="#121212">
-    <meta name="description" content="Documentation for PHP Music – A self-hosted, modern, elegant Music inspired by YouTube Music.">
+    <meta name="description" content="Documentation for PHP Music – A self-hosted, modern, elegant Music Player inspired by YouTube Music.">
     <meta name="author" content="Hirotaka Dango">
     <meta property="og:title" content="PHP Music Documentation">
     <meta property="og:description" content="A self-hosted, modern, elegant Music inspired by YouTube Music.">
@@ -158,47 +158,34 @@
         background: var(--ytm-surface);
         border: 1px solid var(--ytm-surface-2);
         border-radius: 12px;
-        margin-bottom: 2rem;
-        color: var(--ytm-primary-text);
-        transition: transform .2s ease, box-shadow .2s ease;
-      }
-      .doc-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-color: rgba(223, 20, 99, 0.3);
-      }
-      .doc-card .card-header {
-        background: transparent;
-        border-bottom: 1px solid var(--ytm-surface-2);
-        font-size: 1.2rem;
-        color: var(--ytm-primary-text);
-        font-weight: 700;
-        padding: 1.25rem;
-      }
-      .doc-card .card-header i {
-        color: var(--ytm-accent);
-        margin-right: 8px;
+        overflow: hidden;
       }
       .doc-card .card-body {
         padding: 1.5rem;
-        color: var(--ytm-secondary-text);
-        line-height: 1.6;
+      }
+      .doc-card .card-title {
+        font-weight: 700;
+        color: var(--ytm-primary-text);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .doc-card .card-title i {
+        color: var(--ytm-accent);
       }
       code {
         background: #272727;
         color: var(--ytm-accent);
         border-radius: 6px;
-        padding: 3px 8px;
         font-size: 0.9em;
+        padding: 0.2rem 0.4rem;
       }
       pre {
-        background: #181818;
+        background: var(--ytm-surface);
         border: 1px solid var(--ytm-surface-2);
-        color: var(--ytm-primary-text);
-        border-radius: 10px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        font-size: 0.95em;
+        border-radius: 8px;
+        padding: 1rem;
         overflow-x: auto;
       }
       pre code {
@@ -292,13 +279,6 @@
         color: var(--ytm-secondary-text);
         padding: 1.5rem;
         background: var(--ytm-bg);
-      }
-      .badge-custom {
-        background: rgba(223, 20, 99, 0.2);
-        color: var(--ytm-accent);
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 0.8em;
       }
       .hero-images img {
         border-radius: 12px;
@@ -401,79 +381,126 @@
           <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/3.png" alt="Screenshot 3">
           <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/4.png" alt="Screenshot 4">
         </div>
-        <a class="btn btn-light mt-3 mb-2 fw-bold" href="https://phpmusic.rf.gd" target="_blank">Try out the demo 1 <i class="bi bi-box-arrow-up-right"></i></a>
-        <a class="btn btn-light mt-3 mb-2 fw-bold" href="https://phpmusic--relinktrees.replit.app" target="_blank">Try out the demo 2 <i class="bi bi-box-arrow-up-right"></i></a>
-        <div class="w-100 rounded-4 mt-3" style="height: 75vh; overflow: hidden;">
-          <iframe style="width: 125%; height: 93.75vh; transform: scale(0.8); transform-origin: top left; border: none;" src="https://demo.webfuse.com/+iframetest/?url=https%3A%2F%2Fphpmusic.rf.gd"></iframe>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <a class="btn btn-light fw-bold" href="https://phpmusic.rf.gd" target="_blank">Try out Demo 1 <i class="bi bi-box-arrow-up-right"></i></a>
+          <a class="btn btn-light fw-bold" href="https://phpmusic--relinktrees.replit.app" target="_blank">Try out Demo 2 <i class="bi bi-box-arrow-up-right"></i></a>
         </div>
-        <div class="w-100 rounded-4 mt-3" style="height: 75vh; overflow: hidden;">
-          <iframe style="width: 125%; height: 93.75vh; transform: scale(0.8); transform-origin: top left; border: none;" src="https://phpmusic--relinktrees.replit.app"></iframe>
-        </div>
+        
         <a id="introduction"></a>
         <div class="section-title"><i class="bi bi-house-fill"></i> Introduction</div>
         <div class="callout">
           <i class="bi bi-info-circle-fill"></i>
-          <b>PHP Music</b> is an open-source, web-based, self-hosted music platform contained entirely within <code>index.php</code>. By utilizing an embedded SQLite database (<code>music.db</code>), it offers a seamless deployment experience. It boasts a beautiful dark UI inspired by YouTube Music, complete with user accounts, metadata editing, synchronized lyrics, PWA support, dynamic playlists, auto-generated mixes, and extensive social sharing functionality.
+          <b>PHP Music</b> is an open-source, web-based, self-hosted music platform contained entirely within a single <code>index.php</code> file. By utilizing an embedded SQLite database (<code>music.db</code>), it offers a seamless deployment experience with no complex database setup required. It boasts a beautiful dark UI inspired by YouTube Music, complete with user accounts, metadata editing, synchronized lyrics, full PWA support, dynamic playlists, collaborative playlist contribution, an advanced audio engine, auto-generated mixes, and extensive social sharing functionality.
         </div>
         <ul>
           <li>🎵 <b>Scan & Play:</b> Recursively scans your directory for <code>mp3</code>, <code>m4a</code>, <code>flac</code>, <code>ogg</code>, and <code>wav</code> files.</li>
-          <li>🔒 <b>User Accounts:</b> Secure registration, profile management, backup key restore features, and upload quotas.</li>
-          <li>📱 <b>Progressive Web App (PWA):</b> Dynamic Service Worker caches assets for offline browsing.</li>
+          <li>🔒 <b>User Accounts:</b> Secure registration, profile management, backup key recovery, and upload quotas.</li>
+          <li>📱 <b>Progressive Web App (PWA):</b> Dynamic Service Worker caches assets for rapid loading and native-app feel.</li>
           <li>✏️ <b>Metadata Editor & Lyrics:</b> Edit ID3 tags (Title, Artist, Album, Genre, Lyrics) and view synchronized LRC lyrics in real-time.</li>
-          <li>🔗 <b>Social Ecosystem:</b> Follow artists, copy playlists, and share direct links instantly.</li>
+          <li>🔗 <b>Social Ecosystem:</b> Follow artists, invite collaborators, copy playlists, and share direct deep-links instantly.</li>
         </ul>
+        
         <a id="features"></a>
         <div class="section-title"><i class="bi bi-stars"></i> Features</div>
         <div class="row row-cols-1 row-cols-md-2 g-4">
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-music-note-list"></i> Library Management</div>
-              <div class="card-body">Browse by songs, artists, albums, or genres. Infinite scrolling, rapid local search, and diverse sorting options (A-Z, Year, Date Added).</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-music-note-list"></i> Library Management</h5>
+                Browse by songs, artists, albums, or genres. Features infinite scrolling, rapid local search, and diverse sorting options.
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-pencil-square"></i> ID3 Tags & Lyrics</div>
-              <div class="card-body">Modify a song's metadata directly from the browser. Supports viewing and embedding synchronized LRC lyrics. Changes update the database and use getID3 to physically rewrite the tags inside the audio file.</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-pencil-square"></i> ID3 Tags & Synced Lyrics</h5>
+                Modify song metadata directly from the browser. Supports viewing and embedding synchronized LRC lyrics. Changes overwrite local file tags physically via getID3.
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-collection-play"></i> Playlists & Favorites</div>
-              <div class="card-body">Create custom playlists. Drag-and-drop to visually reorder your lists using SortableJS. Import/export entire playlists and favorites as portable JSON files.</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-sliders"></i> Advanced Audio Engine</h5>
+                Features a built-in, togglable 5-band Graphic Equalizer (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz) and automatic real-time Volume Normalization (AGC) via Web Audio API to prevent uneven audio levels.
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-cloud-arrow-down"></i> Playlist Downloader</div>
-              <div class="card-body">Built-in sequential downloader interface. Batch download entire playlists to your local device with real-time logging, or grab single tracks instantly.</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-play-circle-fill"></i> Gapless Playback & Crossfade</h5>
+                Enjoy seamless track transitions via a dual HTML5 audio node system, automatically crossfading outgoing and incoming tracks over an adjustable 3-second period.
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-cloud-upload"></i> Protected Uploads</div>
-              <div class="card-body">Upload multiple songs simultaneously. Features a daily limit (default: 10 songs/day, resets at midnight) and requires explicit admin verification.</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-list-ol"></i> Dynamic Queue Management</h5>
+                YouTube Music-style "Up Next" dynamic play queue. Supports "Play Next" and "Add to Queue" context menu options. Player modals feature an "Up Next" queue tab with on-demand infinite scrolling.
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-shield-lock"></i> Account Recovery</div>
-              <div class="card-body">Keep your data safe with advanced account management. Generate backup keys to wipe your credentials while preserving your music data, allowing seamless account restoration later.</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-broadcast"></i> Infinite Autoplay (Station Mode)</h5>
+                When your active play queue is exhausted, the app automatically transitions to Station Mode, appending 15 similar recommended tracks based on the genre and artist of your last played song.
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-image"></i> Image Optimization</div>
-              <div class="card-body">Profile pictures and embedded album arts are automatically extracted, squared, resized (to 500x500 or 200x200), and converted to WebP to drastically save bandwidth.</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-people-fill"></i> Collaborative Playlists</h5>
+                Invite specific users by email or exact display name to contribute tracks. The UI securely tracks contributors, showing <i>"Added by [User]"</i> inline. Toggling back to Private purges collaborators and their access.
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="card doc-card h-100">
-              <div class="card-header"><i class="bi bi-magic"></i> Smart Recommendations</div>
-              <div class="card-body">The "For You" tab generates personalized shelves and auto-mixes based on your listening history (logs play after 30 seconds), top genres, and followed artists.</div>
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-moon-stars-fill"></i> Sleep Timer</h5>
+                Schedule playback to automatically pause after a specified countdown duration, accessible from user dropdown menus on both desktop and mobile.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-cloud-arrow-down"></i> Playlist Downloader</h5>
+                Built-in sequential downloader interface. Batch download entire playlists directly to your hard drive, or grab single tracks by ID with real-time logging.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-cloud-upload"></i> Protected Uploads</h5>
+                Upload multiple songs simultaneously. Features a daily limit (default: 10 songs/day, resetting at midnight) and requires explicit admin verification to prevent abuse.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-shield-lock"></i> Soft Delete & Recovery</h5>
+                Soft-delete your account credentials while keeping your upload data intact. Generate a backup key to restore your profile details and reclaim ownership later.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-magic"></i> Recommendations & Mixes</h5>
+                The "For You" tab generates personalized shelves (Recently Played, More from top artists) and auto-mixes based on listening history, top genres, and followed creators.
+              </div>
             </div>
           </div>
         </div>
+        
         <a id="installation"></a>
         <div class="section-title"><i class="bi bi-download"></i> Installation & Setup</div>
         <ol>
@@ -493,7 +520,7 @@ cd PHP-Music</code></pre>
           </li>
           <li><b>Permissions:</b>
             PHP must have write permissions to the project directory to create <code>music.db</code> and the <code>uploads/</code> folder.
-            <pre><code>chmod -R 777 . # Use appropriate permissions based on your environment</code></pre>
+            <pre><code>chmod -R 777 . # Adjust permissions as per your server's security standards</code></pre>
           </li>
           <li><b>Run the app:</b>
             <pre><code>php -S localhost:8080</code></pre>
@@ -504,16 +531,19 @@ cd PHP-Music</code></pre>
           <i class="bi bi-exclamation-triangle-fill"></i>
           <b>Security Tip:</b> Change the <code>ADMIN_PASSWORD</code> constant in <code>index.php</code> before deploying to a public server!
         </div>
+        
         <a id="usage"></a>
         <div class="section-title"><i class="bi bi-music-note-list"></i> Usage</div>
         <ul>
-          <li><b>Accounts & Verification:</b> Registering an account allows you to track history, save favorites, and create playlists. To upload music, an admin must toggle your verification status to "yes".</li>
-          <li><b>Playback & Media Keys:</b> The player utilizes the browser's <code>Media Session API</code>. You can control playback in the background using your keyboard media keys or mobile lock screen. Holding the "Next" or "Previous" buttons on the UI skips forward/backward by 5 seconds.</li>
-          <li><b>Playlists & Reordering:</b> Inside any playlist or your Favorites tab (when sorted by "My Order"), simply click and drag a song to reposition it. The new order is immediately saved to the database.</li>
-          <li><b>Import/Export & Downloading:</b> You can backup your playlists and favorites to a portable JSON file. You can also use the integrated <b>Downloader</b> tool to sequentially download an entire playlist directly to your hard drive, or download single tracks via the song context menu.</li>
-          <li><b>Edit Metadata & Lyrics:</b> Click the context menu <i class="bi bi-three-dots-vertical"></i> on a song you uploaded (or as admin) and choose "Edit Info" to change Title, Artist, Album, Genre, Lyrics, and Cover Art. You can also view lyrics via "Show Lyrics" or check file details via "View Metadata".
+          <li><b>Accounts & Verification:</b> Registering an account lets you track listening history, save favorites, and create playlists. To upload music, an admin must verify your account (verified status = "yes").</li>
+          <li><b>Audio Customization:</b> Sculpt your sound directly from the Settings panel. Toggle <b>Volume Normalization</b> (Automatic Gain Control) to keep volume levels balanced, or enable the <b>5-band Equalizer</b> to adjust frequency gains (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz).</li>
+          <li><b>Dynamic Queueing:</b> Click "Play Next" or "Add to Queue" on any track context menu. Scroll down the "Up Next" tab in the player modals (mobile or desktop) to load the queue dynamically with infinite scrolling.</li>
+          <li><b>Sleep Timer:</b> Specify a countdown (in minutes) from your user profile dropdown to automatically pause active playback when the timer runs out.</li>
+          <li><b>Collaborative Playlists:</b> Toggle your playlist to Collaborative. Open the playlist's 3-dot context menu and select "Manage Collaborators" to invite other users to contribute tracks by entering their exact username or email address. Collaborative track additions display <i>"Added by [User]"</i> inline.</li>
+          <li><b>Drag-and-Drop Reordering:</b> Inside your custom Playlists or your Favorites tab (when sorted by "My Order"), click and drag a song to manually reposition it. The new order is automatically saved.</li>
+          <li><b>Metadata & Synced Lyrics:</b> Use "Edit Info" to modify tags (Title, Artist, Album, Genre, Lyrics) and assign custom cover art. Synchronized LRC lyrics will automatically display and scroll in real-time.
             <ul>
-              <li class="mt-2 text-white"><b>Adding Synchronized Lyrics (LRC):</b> When adding timestamps, ensure there is a space between the timestamp and the lyric text so the code parses it correctly.
+              <li class="mt-2 text-white"><b>Formatting LRC Lyrics:</b> Ensure that each timestamp is followed by a space so the player parser can read it correctly.
                 <div class="mt-2 p-3 rounded" style="background: var(--ytm-surface-2);">
                   <span class="badge bg-success me-2">Correct</span> <code>[00:15.30] Never gonna give you up</code><br>
                   <div class="mt-2"></div>
@@ -522,37 +552,40 @@ cd PHP-Music</code></pre>
               </li>
             </ul>
           </li>
-          <li class="mt-2"><b>Delete & Download:</b> Use the context menu on any of your uploaded songs to delete it from the library or download the original file to your device.</li>
-          <li><b>Sharing:</b> Click the share icon <i class="bi bi-share-fill"></i> on an album, artist, or playlist. PHP Music generates direct query parameters (e.g., <code>?share_type=album&album_name=...</code>) that launch directly into that specific view for anyone with the link.</li>
-          <li><b>App Cache:</b> If the UI updates but you see old data, use the "Clear Cache" button in the sidebar. This wipes the IndexedDB app version cache and unregisters the Service Worker dynamically.</li>
+          <li><b>Sharing:</b> Click the share icon <i class="bi bi-share-fill"></i> on any album, artist, playlist, or track to generate direct social links (Facebook, X, WhatsApp, Telegram) with direct query parameters.</li>
+          <li><b>PWA Cache:</b> If changes don't appear, use the "Clear Cache" button in the sidebar to securely wipe the IndexedDB version tracking and unregister the Service Worker dynamically.</li>
         </ul>
+        
         <a id="technical"></a>
-        <div class="section-title"><i class="bi bi-cpu"></i> How It Works</div>
-        <p>PHP Music is architected to minimize dependencies while maximizing performance and features:</p>
+        <div class="section-title"><i class="bi bi-cpu"></i> Technical Architecture</div>
+        <p>PHP Music is built to minimize dependencies while maximizing performance:</p>
         <ul>
-          <li><b>Single File Execution:</b> The <code>index.php</code> file handles both the frontend HTML/JS/CSS payload and the backend REST-like JSON API via the <code>?action=</code> parameter.</li>
-          <li><b>Database Schema:</b> SQLite is used for zero-config persistence. The core tables include:
+          <li><b>Single File Architecture:</b> The <code>index.php</code> file operates both as the client HTML/CSS/JS payload and the backend REST JSON API via the <code>?action=</code> router.</li>
+          <li><b>Audio Routing (Web Audio API):</b> Connects dual HTML5 audio elements (<code>audio</code> and <code>audioB</code>) through dedicated gain nodes to BiquadFilterNodes (EQ), routing into a DynamicsCompressorNode (Volume Normalization) before reaching the audio destination. This enables clean 3-second gapless crossfades.</li>
+          <li><b>Database Schema (SQLite):</b> Persistent data is stored cleanly inside <code>music.db</code>:
             <ul>
-              <li><code>users</code>: Authentication, profile pictures (stored as WebP blobs), upload quotas, and verification status.</li>
-              <li><code>music</code>: Cached metadata (Title, Album, Genre, Duration, Bitrate) and embedded album arts (WebP blobs).</li>
-              <li><code>favorites</code> & <code>playlist_songs</code>: Pivot tables handling user relations and manual <code>sort_order</code>.</li>
-              <li><code>history</code> & <code>play_counts</code>: Logs exact timestamps of playback (triggered after 30 seconds of listening) to fuel the recommendation engine.</li>
-              <li><code>follows</code>: Tracks user-to-artist and user-to-user following relationships.</li>
+              <li><code>users</code>: Manages credentials, profile pictures (WebP blobs), quotas, and verification.</li>
+              <li><code>music</code>: Stores scanned track details, lyrics, and optimized embedded artwork.</li>
+              <li><code>favorites</code> & <code>playlist_songs</code>: Pivot tables mapping user relations and custom positional ordering, along with the `added_by` collaborator tracker.</li>
+              <li><code>playlist_collaborators</code>: Maps authorized editors to specific playlists.</li>
+              <li><code>history</code> & <code>play_counts</code>: Continuous playback logs (registered after 30 seconds) fueling the recommendations engine.</li>
+              <li><code>follows</code>: Map representing user-to-user and user-to-artist following relationships.</li>
             </ul>
           </li>
-          <li><b>Caching & PWA:</b> A Service Worker (<code>?pwa=sw</code>) caches static assets (Bootstrap, Fonts, HTML payload) using a Cache-First strategy. API calls and audio streams bypass the Service Worker to guarantee live data and HTTP Range support.</li>
-          <li><b>Audio Streaming:</b> The <code>get_stream</code> endpoint natively handles <code>HTTP_RANGE</code> requests, allowing browsers to seek through audio files without downloading the entire file first.</li>
+          <li><b>Audio Streaming:</b> The <code>get_stream</code> endpoint natively handles <code>HTTP_RANGE</code> requests, enabling the browser to seek smoothly through audio files without pre-downloading them.</li>
         </ul>
+        
         <a id="admin"></a>
         <div class="section-title"><i class="bi bi-person-gear"></i> Admin Panel</div>
-        <p>Access the administrative dashboard by appending <code>?access=admin</code> to your URL. Log in using the admin password.</p>
+        <p>Access the administrative dashboard by appending <code>?access=admin</code> to your URL. Log in using the admin password (default: <code>admin</code>).</p>
         <ul>
-          <li><b>User Management:</b> View a paginated list (20 users/page) of all registered users.</li>
-          <li><b>Verification:</b> Toggle the verification status of users. Unverified users cannot bypass the daily upload restriction.</li>
-          <li><b>Ban System:</b> Suspend malicious users immediately. Banned users are completely locked out of the application.</li>
-          <li><b>Analytics:</b> Monitor the <code>Last Upload Date</code> and <code>Daily Upload Count</code> of each user to prevent abuse.</li>
-          <li><b>The "Music Library" User:</b> Files scanned locally via "Scan All" are automatically assigned to a hidden system user named "Music Library" (ID is dynamically assigned).</li>
+          <li><b>User Management:</b> View a paginated list (20 users/page) of registered users, searchable by ID, Email, or Artist name.</li>
+          <li><b>Verification:</b> Toggle verification status. Unverified accounts cannot upload files.</li>
+          <li><b>Ban System:</b> Instantly suspend malicious accounts. Suspended users are locked out of the app.</li>
+          <li><b>Account Deletion:</b> Permanently delete any user and purge all of their uploaded files from the server.</li>
+          <li><b>System Library Context:</b> Tracks scanned directly from the host disk are assigned to a virtual administrator account named "Music Library" (ID dynamically resolved).</li>
         </ul>
+        
         <a id="api"></a>
         <div class="section-title"><i class="bi bi-code-slash"></i> API Endpoints</div>
         <p>The backend operates via GET/POST requests targeting <code>?action=...</code>. All responses (except file streams and images) return strict JSON.</p>
@@ -624,7 +657,7 @@ cd PHP-Music</code></pre>
               <tr>
                 <td><code>log_play</code></td>
                 <td>POST</td>
-                <td>Logs a playback event to the user's history array.</td>
+                <td>Logs a playback event (after 30 seconds) to compile user history.</td>
               </tr>
               <tr>
                 <td><code>clear_history</code></td>
@@ -640,6 +673,26 @@ cd PHP-Music</code></pre>
                 <td><code>toggle_follow</code></td>
                 <td>POST</td>
                 <td>Follows/unfollows a target user or artist.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_collaborative</code></td>
+                <td>POST</td>
+                <td>Toggles playlist collaborative state and deletes collaborators if made private.</td>
+              </tr>
+              <tr>
+                <td><code>manage_collaborators</code></td>
+                <td>POST</td>
+                <td>Adds, removes, or lists collaborators on a playlist.</td>
+              </tr>
+              <tr>
+                <td><code>get_queue_songs</code></td>
+                <td>POST</td>
+                <td>Fetches song metadata for a batch of IDs inside the dynamic play queue.</td>
+              </tr>
+              <tr>
+                <td><code>get_radio_tracks</code></td>
+                <td>GET</td>
+                <td>Generates 15 recommended tracks based on a seed song ID's genre/artist for Autoplay.</td>
               </tr>
               <tr>
                 <td><code>update_favorite_order</code></td>
@@ -679,6 +732,7 @@ cd PHP-Music</code></pre>
             </tbody>
           </table>
         </div>
+        
         <a id="faq"></a>
         <div class="section-title"><i class="bi bi-question-circle"></i> Troubleshooting & FAQ</div>
         <div class="accordion" id="faqAccordion">
@@ -742,6 +796,18 @@ cd PHP-Music</code></pre>
               </div>
             </div>
           </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                Collaborative Playlists and "Manage Collaborators" option
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Collaborative Playlists let you invite specific users by email or display name to edit a playlist. Note that the "Manage Collaborators" button in the playlist context menu is strictly visible only when the playlist is set to Collaborative. If you change a playlist's status back to Private, all invited collaborators and their contribution permissions are automatically deleted from the database.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -761,5 +827,5 @@ cd PHP-Music</code></pre>
         });
       });
     </script>
-  <script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-referral-code="r1h5un0351j1" data-repl-id="438fc542-1f41-4c89-8e71-a01f72feb76c"></script></body>
+  </body>
 </html>
