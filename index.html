@@ -397,6 +397,7 @@
           <li>🔒 <b>User Accounts & Long Sessions:</b> Secure registration, profile management, and sessions that last for up to an entire year.</li>
           <li>📱 <b>Progressive Web App (PWA):</b> Dynamic Service Worker caches assets and media streams for rapid loading and true offline performance.</li>
           <li>✏️ <b>Metadata Editor & Lyrics:</b> Edit ID3 tags (Title, Artist, Album, Genre, Lyrics) and view synchronized LRC lyrics in real-time.</li>
+          <li>🔒 <b>Personal Privacy Controls:</b> Set playlists or uploaded songs to "Personal Private" mode, keeping them hidden and unplayable for all other users.</li>
           <li>🔗 <b>Social Ecosystem:</b> Follow artists, invite collaborators, copy playlists, and share direct deep-links instantly.</li>
         </ul>
         
@@ -430,8 +431,8 @@
           <div class="col">
             <div class="card doc-card h-100">
               <div class="card-body">
-                <h5 class="card-title"><i class="bi bi-pencil-square"></i> ID3 Tags & Synced Lyrics</h5>
-                Modify song metadata directly from the browser. Supports viewing and embedding synchronized LRC lyrics. Changes overwrite local file tags physically via getID3.
+                <h5 class="card-title"><i class="bi bi-pencil-square"></i> ID3 Tags, Synced Lyrics & 1:1 Cropping</h5>
+                Modify song metadata and LRC lyrics directly. Features an integrated 1:1 ratio image cropper (with panning and zoom to fill gaps) for profile pictures and cover art, accompanied by real-time upload progress bars showing percentage feedback.
               </div>
             </div>
           </div>
@@ -478,8 +479,8 @@
           <div class="col">
             <div class="card doc-card h-100">
               <div class="card-body">
-                <h5 class="card-title"><i class="bi bi-moon-stars-fill"></i> Draggable Sleep Timer</h5>
-                Schedule playback to automatically pause after a specified countdown duration, with a beautiful draggable floating countdown bubble on active sleep timers that locks boundaries inside screen edges.
+                <h5 class="card-title"><i class="bi bi-moon-stars-fill"></i> Draggable Sleep Timer & NoSleep.js</h5>
+                Schedule playback to auto-pause after a specified countdown. Features a beautiful draggable floating countdown bubble and a robust screen stay-awake mechanism driven by <code>NoSleep.js</code> (silent HTML5 video loop fallback) to prevent mobile display timeouts.
               </div>
             </div>
           </div>
@@ -512,6 +513,14 @@
               <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-magic"></i> Recommendations & Mixes</h5>
                 The "For You" tab generates personalized shelves (Recently Played, More from top artists) and auto-mixes based on listening history, top genres, and followed creators.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-shield-lock-fill"></i> Personal Privacy & Admin Override</h5>
+                Toggle playlists and uploaded tracks to <b>Personal Private</b> mode to keep them strictly invisible and unplayable to other accounts. Private songs are automatically filtered out from other users' play queues and public playlists. The system administrator account (<code>musiclibrary@mail.com</code>) maintains a global override to safely access all private assets.
               </div>
             </div>
           </div>
@@ -556,7 +565,7 @@ cd PHP-Music</code></pre>
           <li><b>Audio Customization:</b> Sculpt your sound directly from the Settings panel. Toggle <b>Volume Normalization</b> (Automatic Gain Control) to keep volume levels balanced, or enable the <b>5-band Equalizer</b> to adjust frequency gains (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz).</li>
           <li><b>Dynamic Queueing:</b> Click "Play Next" or "Add to Queue" on any track context menu. Scroll down the "Up Next" tab in the player modals (mobile or desktop) to load the queue dynamically with infinite scrolling.</li>
           <li><b>Draggable Sleep Timer:</b> Specify a countdown (in minutes) from your profile dropdown to automatically pause playback when the timer runs out. Displays a draggable floating countdown bubble on active sleep timers, complete with a quick-cancel button.</li>
-          <li><b>Collaborative Playlists:</b> Toggle your playlist to Collaborative. Open the playlist's 3-dot context menu and select "Manage Collaborators" to invite other users to contribute tracks by entering their exact username or email address. Collaborative track additions display <i>"Added by [User]"</i> inline.</li>
+          <li><b>Collaborative Playlists & Privacy constraints:</b> Toggle your playlist to Collaborative. Open the playlist's 3-dot context menu and select "Manage Collaborators" to invite other users to contribute tracks by entering their exact username or email address. Collaborative track additions display <i>"Added by [User]"</i> inline. Note that private playlists cannot be collaborative, and switching a playlist to private automatically clears out all existing collaborators. Private songs uploaded by you will automatically be stripped from another user's playlist, even if they have collaborative edit permissions.</li>
           <li><b>Drag-and-Drop Reordering:</b> Inside your custom Playlists or your Favorites tab (when sorted by "My Order"), click and drag a song to manually reposition it. The new order is automatically saved.</li>
           <li><b>Metadata & Synced Lyrics:</b> Use "Edit Info" to modify tags (Title, Artist, Album, Genre, Lyrics) and assign custom cover art. Synchronized LRC lyrics will automatically display and scroll in real-time.
             <ul>
@@ -582,8 +591,9 @@ cd PHP-Music</code></pre>
           <li><b>Database Schema (SQLite):</b> Persistent data is stored cleanly inside <code>music.db</code>:
             <ul>
               <li><code>users</code>: Manages credentials, profile pictures (WebP blobs), quotas, and verification.</li>
-              <li><code>music</code>: Stores scanned track details, lyrics, and optimized embedded artwork.</li>
+              <li><code>music</code>: Stores scanned track details, lyrics, optimized embedded artwork, and the <code>is_private</code> privacy state.</li>
               <li><code>favorites</code> & <code>playlist_songs</code>: Pivot tables mapping user relations and custom positional ordering, along with the `added_by` collaborator tracker.</li>
+              <li><code>playlists</code>: Holds playlist details, collaborative preferences, and the <code>is_private</code> privacy state.</li>
               <li><code>playlist_collaborators</code>: Maps authorized editors to specific playlists.</li>
               <li><code>offline_songs</code>: Pivot table mapping user-specific offline songs.</li>
               <li><code>history</code> & <code>play_counts</code>: Continuous playback logs (registered after 30 seconds) fueling the recommendations engine.</li>
