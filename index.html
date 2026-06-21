@@ -394,8 +394,8 @@
         </div>
         <ul>
           <li>🎵 <b>Scan & Play:</b> Recursively scans your directory for <code>mp3</code>, <code>m4a</code>, <code>flac</code>, <code>ogg</code>, and <code>wav</code> files.</li>
-          <li>🔒 <b>User Accounts:</b> Secure registration, profile management, backup key recovery, and upload quotas.</li>
-          <li>📱 <b>Progressive Web App (PWA):</b> Dynamic Service Worker caches assets for rapid loading and native-app feel.</li>
+          <li>🔒 <b>User Accounts & Long Sessions:</b> Secure registration, profile management, and sessions that last for up to an entire year.</li>
+          <li>📱 <b>Progressive Web App (PWA):</b> Dynamic Service Worker caches assets and media streams for rapid loading and true offline performance.</li>
           <li>✏️ <b>Metadata Editor & Lyrics:</b> Edit ID3 tags (Title, Artist, Album, Genre, Lyrics) and view synchronized LRC lyrics in real-time.</li>
           <li>🔗 <b>Social Ecosystem:</b> Follow artists, invite collaborators, copy playlists, and share direct deep-links instantly.</li>
         </ul>
@@ -408,6 +408,22 @@
               <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-music-note-list"></i> Library Management</h5>
                 Browse by songs, artists, albums, or genres. Features infinite scrolling, rapid local search, and diverse sorting options.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-cloud-arrow-down-fill"></i> Unlimited Offline Listening</h5>
+                Cache song files, cover art, and metadata into browser Cache Storage. Works completely offline. Missing files automatically dim and show warning alerts inside the Offline Music page.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-device-hdd"></i> Local Device Export</h5>
+                Download cached songs directly from local storage into physical files to save data. This option dynamically displays in context menus only for fully cached files.
               </div>
             </div>
           </div>
@@ -462,8 +478,8 @@
           <div class="col">
             <div class="card doc-card h-100">
               <div class="card-body">
-                <h5 class="card-title"><i class="bi bi-moon-stars-fill"></i> Sleep Timer</h5>
-                Schedule playback to automatically pause after a specified countdown duration, accessible from user dropdown menus on both desktop and mobile.
+                <h5 class="card-title"><i class="bi bi-moon-stars-fill"></i> Draggable Sleep Timer</h5>
+                Schedule playback to automatically pause after a specified countdown duration, with a beautiful draggable floating countdown bubble on active sleep timers that locks boundaries inside screen edges.
               </div>
             </div>
           </div>
@@ -515,7 +531,7 @@ cd PHP-Music</code></pre>
             PHP Music runs entirely on SQLite. If you are using <b>XAMPP/LAMPP</b>, you may need to enable it manually.
             <ul>
               <li><b>XAMPP (Windows/macOS):</b> Open <code>xampp/php/php.ini</code> and remove the semicolon (<code>;</code>) before <code>extension=pdo_sqlite</code> and <code>extension=sqlite3</code>. Restart Apache.</li>
-              <li><b>LAMPP (Linux):</b> Open <code>/opt/lampp/etc/php.ini</code>, uncomment the same extensions, and run <code>sudo /opt/lampp/lampp restart</code>.</li>
+              <li><b>LAMPP (Linux):</b> Open `/opt/lampp/etc/php.ini`, uncomment the same extensions, and run `sudo /opt/lampp/lampp restart`.</li>
             </ul>
           </li>
           <li><b>Permissions:</b>
@@ -535,10 +551,11 @@ cd PHP-Music</code></pre>
         <a id="usage"></a>
         <div class="section-title"><i class="bi bi-music-note-list"></i> Usage</div>
         <ul>
-          <li><b>Accounts & Verification:</b> Registering an account lets you track listening history, save favorites, and create playlists. To upload music, an admin must verify your account (verified status = "yes").</li>
+          <li><b>Accounts & Extended Sessions:</b> Registering an account lets you track listening history, save favorites, and create playlists. Sessions securely persist for up to 1 year so you remain logged in across devices. To upload music, an admin must verify your account (verified status = "yes").</li>
+          <li><b>Offline Music Mode:</b> Save songs, cover art, and metadata into browser Cache Storage via <b>Make Available Offline</b> in context menus. If files are not fully cached, they dim and cannot be played. Use <b>Re-download Cache</b> to re-cache if needed. If a song is fully offline, use <b>Save File to Device</b> to download it physically from browser storage without using network data. Drag-and-drop to manually reorder offline songs, with dedicated JSON import/export options.</li>
           <li><b>Audio Customization:</b> Sculpt your sound directly from the Settings panel. Toggle <b>Volume Normalization</b> (Automatic Gain Control) to keep volume levels balanced, or enable the <b>5-band Equalizer</b> to adjust frequency gains (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz).</li>
           <li><b>Dynamic Queueing:</b> Click "Play Next" or "Add to Queue" on any track context menu. Scroll down the "Up Next" tab in the player modals (mobile or desktop) to load the queue dynamically with infinite scrolling.</li>
-          <li><b>Sleep Timer:</b> Specify a countdown (in minutes) from your user profile dropdown to automatically pause active playback when the timer runs out.</li>
+          <li><b>Draggable Sleep Timer:</b> Specify a countdown (in minutes) from your profile dropdown to automatically pause playback when the timer runs out. Displays a draggable floating countdown bubble on active sleep timers, complete with a quick-cancel button.</li>
           <li><b>Collaborative Playlists:</b> Toggle your playlist to Collaborative. Open the playlist's 3-dot context menu and select "Manage Collaborators" to invite other users to contribute tracks by entering their exact username or email address. Collaborative track additions display <i>"Added by [User]"</i> inline.</li>
           <li><b>Drag-and-Drop Reordering:</b> Inside your custom Playlists or your Favorites tab (when sorted by "My Order"), click and drag a song to manually reposition it. The new order is automatically saved.</li>
           <li><b>Metadata & Synced Lyrics:</b> Use "Edit Info" to modify tags (Title, Artist, Album, Genre, Lyrics) and assign custom cover art. Synchronized LRC lyrics will automatically display and scroll in real-time.
@@ -568,11 +585,12 @@ cd PHP-Music</code></pre>
               <li><code>music</code>: Stores scanned track details, lyrics, and optimized embedded artwork.</li>
               <li><code>favorites</code> & <code>playlist_songs</code>: Pivot tables mapping user relations and custom positional ordering, along with the `added_by` collaborator tracker.</li>
               <li><code>playlist_collaborators</code>: Maps authorized editors to specific playlists.</li>
+              <li><code>offline_songs</code>: Pivot table mapping user-specific offline songs.</li>
               <li><code>history</code> & <code>play_counts</code>: Continuous playback logs (registered after 30 seconds) fueling the recommendations engine.</li>
               <li><code>follows</code>: Map representing user-to-user and user-to-artist following relationships.</li>
             </ul>
           </li>
-          <li><b>Audio Streaming:</b> The <code>get_stream</code> endpoint natively handles <code>HTTP_RANGE</code> requests, enabling the browser to seek smoothly through audio files without pre-downloading them.</li>
+          <li><b>Audio Streaming & SW:</b> The <code>get_stream</code> endpoint natively handles <code>HTTP_RANGE</code> requests. The Service Worker intercepts streams, caching them in browser Cache Storage and generating custom 206 Partial Content range responses on local buffers for perfect offline seeking.</li>
         </ul>
         
         <a id="admin"></a>
@@ -607,7 +625,7 @@ cd PHP-Music</code></pre>
               <tr>
                 <td><code>register</code> / <code>login</code></td>
                 <td>POST</td>
-                <td>Handles authentication. Requires JSON payload (email, password).</td>
+                <td>Handles authentication. Requires JSON payload (email, password). Sets active sessions for up to 1 year.</td>
               </tr>
               <tr>
                 <td><code>restore_account</code></td>
@@ -670,6 +688,21 @@ cd PHP-Music</code></pre>
                 <td>Adds/removes a song from favorites.</td>
               </tr>
               <tr>
+                <td><code>toggle_offline</code></td>
+                <td>POST</td>
+                <td>Adds/removes a song from offline cache database mapping.</td>
+              </tr>
+              <tr>
+                <td><code>get_offline_ids</code></td>
+                <td>GET</td>
+                <td>Fetches list of cached/offline song IDs mapped to the user.</td>
+              </tr>
+              <tr>
+                <td><code>get_offline_songs</code></td>
+                <td>GET</td>
+                <td>Fetches detailed metadata list of cached/offline songs.</td>
+              </tr>
+              <tr>
                 <td><code>toggle_follow</code></td>
                 <td>POST</td>
                 <td>Follows/unfollows a target user or artist.</td>
@@ -700,6 +733,11 @@ cd PHP-Music</code></pre>
                 <td>Accepts an array of Song IDs to rewrite the <code>sort_order</code> column.</td>
               </tr>
               <tr>
+                <td><code>update_offline_order</code></td>
+                <td>POST</td>
+                <td>Accepts an array of Song IDs to rewrite position map of offline list.</td>
+              </tr>
+              <tr>
                 <td><code>create_playlist</code></td>
                 <td>POST</td>
                 <td>Generates a new playlist with a unique 8-byte hexadecimal <code>public_id</code>.</td>
@@ -710,14 +748,14 @@ cd PHP-Music</code></pre>
                 <td>Clones another user's public playlist into the active user's account.</td>
               </tr>
               <tr>
-                <td><code>export_playlist</code> / <code>export_favorites</code></td>
+                <td><code>export_playlist</code> / <code>export_favorites</code> / <code>export_offline</code></td>
                 <td>GET</td>
-                <td>Generates a downloadable JSON representation of a playlist or favorites.</td>
+                <td>Generates a downloadable JSON representation of a playlist, favorites, or offline music list.</td>
               </tr>
               <tr>
-                <td><code>import_playlist</code> / <code>import_favorites</code></td>
+                <td><code>import_playlist</code> / <code>import_favorites</code> / <code>import_offline</code></td>
                 <td>POST</td>
-                <td>Parses an uploaded JSON file, matches DB files, and builds a new playlist or favorites list.</td>
+                <td>Parses an uploaded JSON file, matches DB files, and builds target playlist, favorites, or offline list.</td>
               </tr>
               <tr>
                 <td><code>download_song</code></td>
@@ -727,7 +765,7 @@ cd PHP-Music</code></pre>
               <tr>
                 <td><code>get_stream</code></td>
                 <td>GET</td>
-                <td>Streams the physical audio file with 206 Partial Content (HTTP Range) support.</td>
+                <td>Streams the physical audio file with 206 Partial Content (HTTP Range) support. Handles offline stream cache reading.</td>
               </tr>
             </tbody>
           </table>
