@@ -519,6 +519,38 @@
           <div class="col">
             <div class="card doc-card h-100">
               <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-bookmark-fill"></i> Bookmark-based Listen Later</h5>
+                Save tracks to a personalized sortable queue using outline and filled bookmark icons. Manual reordering is saved natively to the database.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-people-fill"></i> Community Social Feed</h5>
+                Share public posts with support for editing, deletion, and reactions (likes and dislikes). Feeds can be filtered by newest posts, highest likes, or only users you follow.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-chat-dots-fill"></i> Song Conversations & Comment CRUD</h5>
+                Engage in song-level discussions with fully featured threaded nesting, direct replies, likes/dislikes on comments, `@username` tags, and individual edit/delete operations.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-journal-text"></i> Personal Notes System</h5>
+                A sandboxed, private notebook to compile thoughts, song lists, or lyrics, sortable dynamically by newest, oldest, and modified timestamps.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-shield-lock-fill"></i> Personal Privacy & Admin Override</h5>
                 Toggle playlists and uploaded tracks to <b>Personal Private</b> mode to keep them strictly invisible and unplayable to other accounts. Private songs are automatically filtered out from other users' play queues and public playlists. The system administrator account (<code>musiclibrary@mail.com</code>) maintains a global override to safely access all private assets.
               </div>
@@ -561,6 +593,11 @@ cd PHP-Music</code></pre>
         <div class="section-title"><i class="bi bi-music-note-list"></i> Usage</div>
         <ul>
           <li><b>Accounts & Extended Sessions:</b> Registering an account lets you track listening history, save favorites, and create playlists. Sessions securely persist for up to 1 year so you remain logged in across devices. To upload music, an admin must verify your account (verified status = "yes").</li>
+          <li><b>Dynamic Navigation Sidebar:</b> Access directories for *Listen Later*, *Community*, and *Personal Notes* situated directly below the **Following** tab.</li>
+          <li><b>Listen Later (Bookmark):</b> From any song's 3-dot context menu, select "Listen Later" to save it to your bookmarks. Bookmark icons dynamically alternate states. Drag and drop tracks inside your *Listen Later* tab to manually reorder your queue.</li>
+          <li><b>Song Community & Comments CRUD:</b> Open "View Comments & Likes" from any song context menu to engage in track discussions. This panel allows you to like/dislike the track, post nested comments, reply, react to other comments, or edit/delete your own submissions. Adding <code>@username</code> inline will automatically format and highlight the tag for visibility.</li>
+          <li><b>Community Social Feed:</b> Share posts with other users in the Community space. You can post, edit, delete, and react (like/dislike) to updates. Sort feed content by *Newest*, *Most Liked*, or exclusively from *Following Users*.</li>
+          <li><b>Personal Notes:</b> Use the *Personal Notes* tab to manage draft ideas or lyric logs privately. These are sandboxed strictly to your profile and can be sorted by *Newest*, *Oldest*, or *Recently Modified*.</li>
           <li><b>Offline Music Mode:</b> Save songs, cover art, and metadata into browser Cache Storage via <b>Make Available Offline</b> in context menus. If files are not fully cached, they dim and cannot be played. Use <b>Re-download Cache</b> to re-cache if needed. If a song is fully offline, use <b>Save File to Device</b> to download it physically from browser storage without using network data. Drag-and-drop to manually reorder offline songs, with dedicated JSON import/export options.</li>
           <li><b>Audio Customization:</b> Sculpt your sound directly from the Settings panel. Toggle <b>Volume Normalization</b> (Automatic Gain Control) to keep volume levels balanced, or enable the <b>5-band Equalizer</b> to adjust frequency gains (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz).</li>
           <li><b>Dynamic Queueing:</b> Click "Play Next" or "Add to Queue" on any track context menu. Scroll down the "Up Next" tab in the player modals (mobile or desktop) to load the queue dynamically with infinite scrolling.</li>
@@ -596,6 +633,13 @@ cd PHP-Music</code></pre>
               <li><code>playlists</code>: Holds playlist details, collaborative preferences, and the <code>is_private</code> privacy state.</li>
               <li><code>playlist_collaborators</code>: Maps authorized editors to specific playlists.</li>
               <li><code>offline_songs</code>: Pivot table mapping user-specific offline songs.</li>
+              <li><code>listen_later</code>: Stores user bookmarks and position maps.</li>
+              <li><code>personal_notes</code>: Stores sandboxed personal notebook content.</li>
+              <li><code>song_reactions</code>: Stores user likes/dislikes on tracks.</li>
+              <li><code>song_comments</code>: Stores song-level comment logs.</li>
+              <li><code>comment_reactions</code>: Stores likes/dislikes on individual comments.</li>
+              <li><code>community_posts</code>: Stores public feed status updates.</li>
+              <li><code>community_reactions</code>: Stores likes/dislikes on social posts.</li>
               <li><code>history</code> & <code>play_counts</code>: Continuous playback logs (registered after 30 seconds) fueling the recommendations engine.</li>
               <li><code>follows</code>: Map representing user-to-user and user-to-artist following relationships.</li>
             </ul>
@@ -696,6 +740,71 @@ cd PHP-Music</code></pre>
                 <td><code>toggle_favorite</code></td>
                 <td>POST</td>
                 <td>Adds/removes a song from favorites.</td>
+              </tr>
+              <tr>
+                <td><code>get_listen_later</code> / <code>get_listen_later_ids</code></td>
+                <td>GET</td>
+                <td>Fetches detailed metadata lists or raw IDs of bookmarked songs.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_listen_later</code></td>
+                <td>POST</td>
+                <td>Adds/removes a song from the listen later bookmarks.</td>
+              </tr>
+              <tr>
+                <td><code>update_listen_later_order</code></td>
+                <td>POST</td>
+                <td>Accepts an array of Song IDs to rewrite the position mapping of bookmarks.</td>
+              </tr>
+              <tr>
+                <td><code>get_notes</code></td>
+                <td>GET</td>
+                <td>Fetches private sandboxed personal notes. Supports sorting.</td>
+              </tr>
+              <tr>
+                <td><code>save_note</code></td>
+                <td>POST</td>
+                <td>Creates a new note or edits an existing note.</td>
+              </tr>
+              <tr>
+                <td><code>delete_note</code></td>
+                <td>POST</td>
+                <td>Deletes a specific note.</td>
+              </tr>
+              <tr>
+                <td><code>get_song_comments</code></td>
+                <td>GET</td>
+                <td>Fetches comment trees, overall song reactions, and comment likes/dislikes.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_song_reaction</code></td>
+                <td>POST</td>
+                <td>Registers a like or dislike on a specific song.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_comment_reaction</code></td>
+                <td>POST</td>
+                <td>Registers a like or dislike on an individual comment.</td>
+              </tr>
+              <tr>
+                <td><code>add_song_comment</code> / <code>edit_song_comment</code> / <code>delete_song_comment</code></td>
+                <td>POST</td>
+                <td>Full CRUD operations on individual track-level comments.</td>
+              </tr>
+              <tr>
+                <td><code>get_community</code></td>
+                <td>GET</td>
+                <td>Fetches public status posts with like/dislike counts and author info. Supports sorting.</td>
+              </tr>
+              <tr>
+                <td><code>create_community_post</code> / <code>edit_community_post</code> / <code>delete_community_post</code></td>
+                <td>POST</td>
+                <td>Full CRUD operations on community posts.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_post_reaction</code></td>
+                <td>POST</td>
+                <td>Registers a like or dislike on a community post.</td>
               </tr>
               <tr>
                 <td><code>toggle_offline</code></td>
