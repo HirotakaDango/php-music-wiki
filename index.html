@@ -551,6 +551,22 @@
           <div class="col">
             <div class="card doc-card h-100">
               <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-chat-dots-fill"></i> Direct Messaging (Inbox)</h5>
+                Real-time peer-to-peer messaging system. Features read/unread indicators, image attachments, message editing/deletion, an inbox search tool, and live user online/active status presence.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-calendar3"></i> Interactive Calendar & Clock</h5>
+                A built-in interactive calendar widget. Jump between dates using the date-picker, easily return to today, and view the current time running on a real-time interval clock.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-shield-lock-fill"></i> Personal Privacy & Admin Override</h5>
                 Toggle playlists and uploaded tracks to <b>Personal Private</b> mode to keep them strictly invisible and unplayable to other accounts. Private songs are automatically filtered out from other users' play queues and public playlists. The system administrator account (<code>musiclibrary@mail.com</code>) maintains a global override to safely access all private assets.
               </div>
@@ -598,6 +614,9 @@ cd PHP-Music</code></pre>
           <li><b>Song Community & Comments CRUD:</b> Open "View Comments & Likes" from any song context menu to engage in track discussions. This panel allows you to like/dislike the track, post nested comments, reply, react to other comments, or edit/delete your own submissions. Adding <code>@username</code> inline will automatically format and highlight the tag for visibility.</li>
           <li><b>Community Social Feed:</b> Share posts with other users in the Community space. You can post, edit, delete, and react (like/dislike) to updates. Sort feed content by *Newest*, *Most Liked*, or exclusively from *Following Users*.</li>
           <li><b>Personal Notes:</b> Use the *Personal Notes* tab to manage draft ideas or lyric logs privately. These are sandboxed strictly to your profile and can be sorted by *Newest*, *Oldest*, or *Recently Modified*.</li>
+          <li><b>Direct Messaging & User Search:</b> Access your Inbox to send real-time text and image messages to other users. Search for artists directly within the inbox. See when users were last active and check message read/unread status.</li>
+          <li><b>User Blocking:</b> From any user's profile, click the Block icon to instantly prevent them from messaging or following you, automatically severing any mutual follows.</li>
+          <li><b>Calendar & Time:</b> Use the Calendar option in the sidebar to open a real-time clock and interactive date-picker, ideal for quick date referencing during music curation.</li>
           <li><b>Offline Music Mode:</b> Save songs, cover art, and metadata into browser Cache Storage via <b>Make Available Offline</b> in context menus. If files are not fully cached, they dim and cannot be played. Use <b>Re-download Cache</b> to re-cache if needed. If a song is fully offline, use <b>Save File to Device</b> to download it physically from browser storage without using network data. Drag-and-drop to manually reorder offline songs, with dedicated JSON import/export options.</li>
           <li><b>Audio Customization:</b> Sculpt your sound directly from the Settings panel. Toggle <b>Volume Normalization</b> (Automatic Gain Control) to keep volume levels balanced, or enable the <b>5-band Equalizer</b> to adjust frequency gains (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz).</li>
           <li><b>Dynamic Queueing:</b> Click "Play Next" or "Add to Queue" on any track context menu. Scroll down the "Up Next" tab in the player modals (mobile or desktop) to load the queue dynamically with infinite scrolling.</li>
@@ -640,6 +659,8 @@ cd PHP-Music</code></pre>
               <li><code>comment_reactions</code>: Stores likes/dislikes on individual comments.</li>
               <li><code>community_posts</code>: Stores public feed status updates.</li>
               <li><code>community_reactions</code>: Stores likes/dislikes on social posts.</li>
+              <li><code>messages</code>: Stores peer-to-peer direct messages, image attachments, read statuses, and edit tracking.</li>
+              <li><code>blocks</code>: Stores user-to-user block relationships.</li>
               <li><code>history</code> & <code>play_counts</code>: Continuous playback logs (registered after 30 seconds) fueling the recommendations engine.</li>
               <li><code>follows</code>: Map representing user-to-user and user-to-artist following relationships.</li>
             </ul>
@@ -825,6 +846,21 @@ cd PHP-Music</code></pre>
                 <td><code>toggle_follow</code></td>
                 <td>POST</td>
                 <td>Follows/unfollows a target user or artist.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_block</code></td>
+                <td>POST</td>
+                <td>Blocks/unblocks a target user, preventing follows and direct messages.</td>
+              </tr>
+              <tr>
+                <td><code>get_inbox</code> / <code>get_chat</code></td>
+                <td>GET</td>
+                <td>Fetches conversation summaries and direct peer-to-peer message history.</td>
+              </tr>
+              <tr>
+                <td><code>send_message</code> / <code>edit_message</code> / <code>delete_message</code></td>
+                <td>POST</td>
+                <td>Handles sending (with image support), modifying, and deleting direct messages.</td>
               </tr>
               <tr>
                 <td><code>toggle_collaborative</code></td>
