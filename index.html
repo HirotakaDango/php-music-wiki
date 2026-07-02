@@ -390,14 +390,15 @@
         <div class="section-title"><i class="bi bi-house-fill"></i> Introduction</div>
         <div class="callout">
           <i class="bi bi-info-circle-fill"></i>
-          <b>PHP Music</b> is an open-source, web-based, self-hosted music platform contained entirely within a single <code>index.php</code> file. By utilizing an embedded SQLite database (<code>music.db</code>), it offers a seamless deployment experience with no complex database setup required. It boasts a beautiful dark UI inspired by YouTube Music, complete with user accounts, metadata editing, synchronized lyrics, full PWA support, dynamic playlists, collaborative playlist contribution, an advanced audio engine, auto-generated mixes, and extensive social sharing functionality.
+          <b>PHP Music</b> is an open-source, web-based, self-hosted music platform contained entirely within a single <code>index.php</code> file. By utilizing an embedded SQLite database (<code>music.db</code>), it offers a seamless deployment experience with no complex database setup required. It boasts a beautiful dark UI inspired by YouTube Music, complete with user accounts, metadata editing, synchronized lyrics, full PWA support, dynamic playlists, collaborative playlist contribution, an advanced audio engine, auto-generated mixes, an integrated Markdown blogging platform, and extensive social sharing functionality.
         </div>
         <ul>
           <li>🎵 <b>Scan & Play:</b> Recursively scans your directory for <code>mp3</code>, <code>m4a</code>, <code>flac</code>, <code>ogg</code>, and <code>wav</code> files.</li>
           <li>🔒 <b>User Accounts & Long Sessions:</b> Secure registration, profile management, and sessions that last for up to an entire year.</li>
           <li>📱 <b>Progressive Web App (PWA):</b> Dynamic Service Worker caches assets and media streams for rapid loading and true offline performance.</li>
           <li>✏️ <b>Metadata Editor & Lyrics:</b> Edit ID3 tags (Title, Artist, Album, Genre, Lyrics) and view synchronized LRC lyrics in real-time.</li>
-          <li>🔒 <b>Personal Privacy Controls:</b> Set playlists or uploaded songs to "Personal Private" mode, keeping them hidden and unplayable for all other users.</li>
+          <li>📝 <b>Blogging & Markdown Platform:</b> Create, auto-save, and publish blogs with Markdown, Find & Replace, multi-format exports (PDF, HTML, MD, TXT, ZIP), and threaded comments.</li>
+          <li>🔒 <b>Personal Privacy Controls:</b> Set playlists, uploaded songs, or blogs to "Personal Private" mode, keeping them hidden and unplayable/unreadable for all other users.</li>
           <li>🔗 <b>Social Ecosystem:</b> Follow artists, invite collaborators, copy playlists, and share direct deep-links instantly.</li>
         </ul>
         
@@ -409,6 +410,14 @@
               <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-music-note-list"></i> Library Management</h5>
                 Browse by songs, artists, albums, or genres. Features infinite scrolling, rapid local search, and diverse sorting options.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-journal-richtext"></i> Blogging Platform & Markdown Editor</h5>
+                Publish public posts or save private drafts. Features live Markdown preview, Find & Replace tool, auto-saving drafts, real-time word/character count, categories, and multi-format exports (PDF, HTML, MD, TXT, or ZIP). Includes blog-level likes/dislikes and threaded comments with nested replies (read-only for guests).
               </div>
             </div>
           </div>
@@ -568,7 +577,7 @@
             <div class="card doc-card h-100">
               <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-shield-lock-fill"></i> Personal Privacy & Admin Override</h5>
-                Toggle playlists and uploaded tracks to <b>Personal Private</b> mode to keep them strictly invisible and unplayable to other accounts. Private songs are automatically filtered out from other users' play queues and public playlists. The system administrator account (<code>musiclibrary@mail.com</code>) maintains a global override to safely access all private assets.
+                Toggle playlists, uploaded tracks, or blogs to <b>Personal Private</b> mode to keep them strictly invisible and unplayable/unreadable to other accounts. Private items are automatically filtered out from other users' play queues, search results, and public lists. The system administrator account (<code>musiclibrary@mail.com</code>) maintains a global override to safely access all private assets.
               </div>
             </div>
           </div>
@@ -608,8 +617,13 @@ cd PHP-Music</code></pre>
         <a id="usage"></a>
         <div class="section-title"><i class="bi bi-music-note-list"></i> Usage</div>
         <ul>
-          <li><b>Accounts & Extended Sessions:</b> Registering an account lets you track listening history, save favorites, and create playlists. Sessions securely persist for up to 1 year so you remain logged in across devices. To upload music, an admin must verify your account (verified status = "yes").</li>
-          <li><b>Dynamic Navigation Sidebar:</b> Access directories for *Listen Later*, *Community*, and *Personal Notes* situated directly below the **Following** tab.</li>
+          <li><b>Accounts & Extended Sessions:</b> Registering an account lets you track listening history, save favorites, create playlists, write blogs, and post comments. Sessions securely persist for up to 1 year so you remain logged in across devices. To upload music, an admin must verify your account (verified status = "yes").</li>
+          <li><b>Dynamic Navigation Sidebar:</b> Access directories for *Listen Later*, *Community*, *Personal Notes*, and *My Blogs* situated directly below the **Following** tab.</li>
+          <li><b>Blogging Platform & Markdown Editor:</b> Access *My Blogs* from the sidebar to compose and publish articles. Supports full Markdown formatting (headings, lists, code blocks, tables, and media embeds) with a live split/preview mode and real-time word/character counting. Features an integrated **Find & Replace** tool, auto-saving drafts, category classification, and status toggles (*Public / Published* vs *Private / Draft*).</li>
+          <li><b>Blog Engagement & Comments:</b> Public blogs feature like/dislike reactions and a full threaded comment section with nested replies, comment reactions, `@username` mentions, and edit/delete permissions for comment owners. Non-logged-in guests can read blogs and view comment threads, while comment posting and reaction controls are reserved for logged-in accounts.</li>
+          <li><b>Blog Search & Sorting:</b> Search through your blogs using the debounced search bar with empty-match feedback, and sort lists by *Newest*, *Oldest*, or *Recently Modified*.</li>
+          <li><b>Multi-Select & Bulk Actions for Blogs:</b> Long-press or right-click blog cards to enter multi-select mode (highlighted with red borders). Bulk delete or download selected blogs as a `.zip` archive. Switching views automatically cancels multi-select mode.</li>
+          <li><b>Exporting & File Import for Blogs:</b> Export individual blogs to PDF, HTML, Markdown, or Plain Text. Batch import `.txt` files as new drafts or backup/restore entire blog collections via JSON.</li>
           <li><b>Listen Later (Bookmark):</b> From any song's 3-dot context menu, select "Listen Later" to save it to your bookmarks. Bookmark icons dynamically alternate states. Drag and drop tracks inside your *Listen Later* tab to manually reorder your queue.</li>
           <li><b>Song Community & Comments CRUD:</b> Open "View Comments & Likes" from any song context menu to engage in track discussions. This panel allows you to like/dislike the track, post nested comments, reply, react to other comments, or edit/delete your own submissions. Adding <code>@username</code> inline will automatically format and highlight the tag for visibility.</li>
           <li><b>Community Social Feed:</b> Share posts with other users in the Community space. You can post, edit, delete, and react (like/dislike) to updates. Sort feed content by *Newest*, *Most Liked*, or exclusively from *Following Users*.</li>
@@ -634,7 +648,7 @@ cd PHP-Music</code></pre>
               </li>
             </ul>
           </li>
-          <li><b>Sharing:</b> Click the share icon <i class="bi bi-share-fill"></i> on any album, artist, playlist, or track to generate direct social links (Facebook, X, WhatsApp, Telegram) with direct query parameters.</li>
+          <li><b>Sharing:</b> Click the share icon <i class="bi bi-share-fill"></i> on any album, artist, playlist, track, or blog to generate direct social links (Facebook, X, WhatsApp, Telegram) with direct query parameters.</li>
           <li><b>PWA Cache:</b> If changes don't appear, use the "Clear Cache" button in the sidebar to securely wipe the IndexedDB version tracking and unregister the Service Worker dynamically.</li>
         </ul>
         
@@ -654,6 +668,10 @@ cd PHP-Music</code></pre>
               <li><code>offline_songs</code>: Pivot table mapping user-specific offline songs.</li>
               <li><code>listen_later</code>: Stores user bookmarks and position maps.</li>
               <li><code>personal_notes</code>: Stores sandboxed personal notebook content.</li>
+              <li><code>blogs</code>: Stores blog titles, markdown content, public/private status, category pointers, and unique 8-byte hexadecimal `public_id` handles.</li>
+              <li><code>blog_categories</code>: User-defined category mappings for organizing blog posts.</li>
+              <li><code>blog_comments</code>: Threaded comment trees for blogs with parent-child nesting.</li>
+              <li><code>blog_reactions</code> & <code>blog_comment_reactions</code>: Tracks user likes and dislikes on blog posts and individual comments.</li>
               <li><code>song_reactions</code>: Stores user likes/dislikes on tracks.</li>
               <li><code>song_comments</code>: Stores song-level comment logs.</li>
               <li><code>comment_reactions</code>: Stores likes/dislikes on individual comments.</li>
@@ -675,7 +693,7 @@ cd PHP-Music</code></pre>
           <li><b>User Management:</b> View a paginated list (20 users/page) of registered users, searchable by ID, Email, or Artist name.</li>
           <li><b>Verification:</b> Toggle verification status. Unverified accounts cannot upload files.</li>
           <li><b>Ban System:</b> Instantly suspend malicious accounts. Suspended users are locked out of the app.</li>
-          <li><b>Account Deletion:</b> Permanently delete any user and purge all of their uploaded files from the server.</li>
+          <li><b>Account Deletion & Purging:</b> Permanently delete any user and purge all of their uploaded files, playlists, notes, tasks, blogs, and categories from the server database.</li>
           <li><b>System Library Context:</b> Tracks scanned directly from the host disk are assigned to a virtual administrator account named "Music Library" (ID dynamically resolved).</li>
         </ul>
         
@@ -710,7 +728,7 @@ cd PHP-Music</code></pre>
               <tr>
                 <td><code>delete_account_keep_data</code></td>
                 <td>GET</td>
-                <td>Wipes user credentials and email, but keeps user data and generates a backup key.</td>
+                <td>Wipes user credentials and email, but keeps user data (music, notes, tasks, blogs) and generates a backup key.</td>
               </tr>
               <tr>
                 <td><code>upload_profile_picture</code></td>
@@ -730,7 +748,7 @@ cd PHP-Music</code></pre>
               <tr>
                 <td><code>edit_metadata</code></td>
                 <td>POST</td>
-                <td>Updates DB and writes ID3v2/Vorbis tags (including lyrics) directly into the audio file.</td>
+                <td>Updates DB and writes ID3v2/Vorbis tags (including lyrics) directly into the audio file. Saves covers in dedicated <code>covers/songs</code> and <code>covers/albums</code> folders.</td>
               </tr>
               <tr>
                 <td><code>get_songs</code></td>
@@ -741,6 +759,56 @@ cd PHP-Music</code></pre>
                 <td><code>get_view_data</code></td>
                 <td>GET</td>
                 <td>Aggregates data for deep links. Supports types: <code>profile</code>, <code>playlist</code>, <code>artist</code>, <code>album</code>.</td>
+              </tr>
+              <tr>
+                <td><code>get_blogs</code></td>
+                <td>GET</td>
+                <td>Fetches blog posts. Supports parameters: <code>sort</code>, <code>filter</code>, <code>q</code> (search), <code>artist_id</code>.</td>
+              </tr>
+              <tr>
+                <td><code>get_blog</code></td>
+                <td>GET</td>
+                <td>Retrieves a single blog post by its <code>public_id</code>.</td>
+              </tr>
+              <tr>
+                <td><code>save_blog</code></td>
+                <td>POST</td>
+                <td>Creates or updates a blog post.</td>
+              </tr>
+              <tr>
+                <td><code>delete_blog</code></td>
+                <td>POST</td>
+                <td>Deletes a blog post by ID.</td>
+              </tr>
+              <tr>
+                <td><code>export_blogs</code></td>
+                <td>GET</td>
+                <td>Generates a downloadable JSON export of user blogs.</td>
+              </tr>
+              <tr>
+                <td><code>import_blogs</code></td>
+                <td>POST</td>
+                <td>Parses an uploaded JSON file and imports blog posts.</td>
+              </tr>
+              <tr>
+                <td><code>get_blog_comments</code></td>
+                <td>GET</td>
+                <td>Retrieves threaded comments, parent-child replies, blog reactions, and comment likes/dislikes.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_blog_reaction</code></td>
+                <td>POST</td>
+                <td>Registers a like or dislike on a blog post.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_blog_comment_reaction</code></td>
+                <td>POST</td>
+                <td>Registers a like or dislike on an individual blog comment.</td>
+              </tr>
+              <tr>
+                <td><code>add_blog_comment</code> / <code>edit_blog_comment</code> / <code>delete_blog_comment</code></td>
+                <td>POST</td>
+                <td>Full CRUD operations on blog comments and nested replies.</td>
               </tr>
               <tr>
                 <td><code>get_recommendations</code></td>
@@ -961,7 +1029,7 @@ cd PHP-Music</code></pre>
             </h2>
             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
               <div class="accordion-body">
-                If the database updates but the physical file tags do not change, check the file permissions of the specific MP3/FLAC file. PHP needs write permissions to the file to utilize the getID3 tag writer.
+                If the database updates but the physical file tags do not change, check the file permissions of the specific MP3/FLAC file. PHP needs write permissions to the file to utilize the getID3 tag writer. Note that updated cover artwork is saved to the database, embedded into file tags, and mirrored in dedicated <code>covers/songs</code> and <code>covers/albums</code> directories.
               </div>
             </div>
           </div>
