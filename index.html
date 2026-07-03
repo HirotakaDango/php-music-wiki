@@ -581,6 +581,14 @@
               </div>
             </div>
           </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-hdd-rack-fill"></i> Integrated Drive Backend</h5>
+                A robust PHPDrive backend manager for the administrator. Features dynamic deep-linking URLs, a responsive 2-column mobile grid, native <code>.zip</code> archive extraction, real-time folder content calculations (files, subfolders, and size), and persistent 1-year admin sessions.
+              </div>
+            </div>
+          </div>
         </div>
         
         <a id="installation"></a>
@@ -688,13 +696,14 @@ cd PHP-Music</code></pre>
         
         <a id="admin"></a>
         <div class="section-title"><i class="bi bi-person-gear"></i> Admin Panel</div>
-        <p>Access the administrative dashboard by appending <code>?access=admin</code> to your URL. Log in using the admin password (default: <code>admin</code>).</p>
+        <p>Access the administrative dashboard by appending <code>?access=admin</code> to your URL. Log in using the admin password (default: <code>admin</code>). Admin sessions are highly persistent and securely cached in the browser via a 1-year cookie.</p>
         <ul>
           <li><b>User Management:</b> View a paginated list (20 users/page) of registered users, searchable by ID, Email, or Artist name.</li>
           <li><b>Verification:</b> Toggle verification status. Unverified accounts cannot upload files.</li>
           <li><b>Ban System:</b> Instantly suspend malicious accounts. Suspended users are locked out of the app.</li>
           <li><b>Account Deletion & Purging:</b> Permanently delete any user and purge all of their uploaded files, playlists, notes, tasks, blogs, and categories from the server database.</li>
           <li><b>System Library Context:</b> Tracks scanned directly from the host disk are assigned to a virtual administrator account named "Music Library" (ID dynamically resolved).</li>
+          <li><b>Drive Manager:</b> An integrated file manager for server assets (<code>?access=admin&page=drive</code>). Features include native <code>.zip</code> extraction via context menus, dynamic URL deep linking for active files (e.g., <code>&edit=Xin.txt</code>), a highly optimized 2-column mobile grid, and recursive folder property calculations (displaying total files, subdirectories, and byte size).</li>
         </ul>
         
         <a id="api"></a>
@@ -969,6 +978,16 @@ cd PHP-Music</code></pre>
                 <td><code>copy_playlist</code></td>
                 <td>POST</td>
                 <td>Clones another user's public playlist into the active user's account.</td>
+              </tr>
+              <tr>
+                <td><code>unzip</code> (Drive API)</td>
+                <td>POST</td>
+                <td>Extracts a <code>.zip</code> archive directly on the server filesystem. Requires Admin session.</td>
+              </tr>
+              <tr>
+                <td><code>properties</code> (Drive API)</td>
+                <td>GET</td>
+                <td>Calculates recursive byte sizes and structural counts (files/folders) for directories.</td>
               </tr>
               <tr>
                 <td><code>export_playlist</code> / <code>export_favorites</code> / <code>export_offline</code></td>
