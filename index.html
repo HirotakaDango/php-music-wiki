@@ -382,10 +382,10 @@
           <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/2.png" alt="Screenshot 2">
           <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/3.png" alt="Screenshot 3">
           <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/4.png" alt="Screenshot 4">
-          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/4.png" alt="Screenshot 5">
-          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/4.png" alt="Screenshot 6">
-          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/4.png" alt="Screenshot 7">
-          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/4.png" alt="Screenshot 8">
+          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/5.png" alt="Screenshot 5">
+          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/6.png" alt="Screenshot 6">
+          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/7.png" alt="Screenshot 7">
+          <img class="w-100 object-fit-contain" src="https://raw.githubusercontent.com/HirotakaDango/php-music-wiki/refs/heads/main/8.png" alt="Screenshot 8">
         </div>
         <div class="d-flex flex-wrap gap-2 mb-4">
           <a class="btn btn-light fw-bold" href="https://phpmusic.rf.gd" target="_blank">Try out Demo 1 <i class="bi bi-box-arrow-up-right"></i></a>
@@ -405,9 +405,11 @@
           <li>✏️ <b>Metadata Editor & Lyrics:</b> Edit ID3 tags (Title, Artist, Album, Genre, Lyrics) and view synchronized LRC lyrics in real-time.</li>
           <li>📝 <b>Blogging & Markdown Platform:</b> Create, auto-save, and publish blogs with Markdown, Find & Replace, multi-format exports (PDF, HTML, MD, TXT, ZIP), and threaded comments.</li>
           <li>🔒 <b>Personal Privacy Controls:</b> Set playlists, uploaded songs, or blogs to "Personal Private" mode, keeping them hidden and unplayable/unreadable for all other users.</li>
-          <li>🎨 <b>Integrated Image Editor:</b> Design graphic covers or modify images with custom layers, filters, shapes, text, scale transformations, and PNG exports directly in-app.</li>
+          <li>🎨 <b>Integrated Image Editor (ImagEditor):</b> Design graphic covers or modify images with custom layers, filters, shapes, text, scale transformations, and PNG exports directly in-app.</li>
+          <li>🎧 <b>PHPAudio – Audio Editor:</b> Trim, amplify, edit metadata, and save audio files directly to your library with waveform preview and rollback support.</li>
           <li>🕹️ <b>Embedded Rhythm Game:</b> Play auto-analyzed beatmaps of your personal library with customizable keybinds, adjustable tick speeds (up to 20x), pause menus, and player-based global ranks.</li>
           <li>💻 <b>Integrated PHPEditor (IDE):</b> Desktop-optimized browser code editor for server files with Ace Editor, syntax highlighting, multi-tab support, file history rollback, and a terminal console.</li>
+          <li>🖼️ <b>PHPShares – Artwork & Manga Gallery:</b> Upload and share illustrations and manga with tags, series, characters, parodies, NSFW toggle, favorites, threaded comments, and a dedicated manga reader with page navigation.</li>
           <li>🔗 <b>Social Ecosystem:</b> Follow artists, invite collaborators, copy playlists, and share direct deep-links instantly.</li>
         </ul>
         
@@ -449,8 +451,24 @@
           <div class="col">
             <div class="card doc-card h-100">
               <div class="card-body">
-                <h5 class="card-title"><i class="bi bi-image"></i> Advanced HTML5 Image Editor</h5>
-                Create covers or edit pictures with a multi-layered canvas workspace. Import images, inject editable text layers, append shapes, drag, rotate, resize, toggle flip orientations, manage layer orders, apply filters (brightness, contrast, grayscale), and export files as high-resolution PNGs.
+                <h5 class="card-title"><i class="bi bi-image"></i> Advanced HTML5 Image Editor (ImagEditor)</h5>
+                Create covers or edit pictures with a multi-layered canvas workspace. Import images, inject editable text layers, append shapes, drag, rotate, resize, toggle flip orientations, manage layer orders, apply filters (brightness, contrast, grayscale), and export files as high-resolution PNGs, JPEGs, WEBP, SVG, or project JSON. Includes brush tools with symmetry modes and 25+ design templates.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-music-note-beamed"></i> PHPAudio – Audio Editor</h5>
+                Edit audio files directly in your browser: trim, amplify, adjust volume, and update metadata (title, artist, album, cover art). Uses the Web Audio API for waveform rendering and trimming; getID3 for metadata extraction; supports saving edited tracks back to the library with updated tags and cover images. Includes version rollback for library tracks.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card doc-card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-images"></i> PHPShares – Artwork & Manga Gallery</h5>
+                Upload and share illustrations and manga with tags, series, characters, parodies, groups, and NSFW flagging. Browse by tags, characters, parodies, groups, or series. Manga reader with page navigation, keyboard controls, and episode selectors. Favorites and threaded comments with markdown and @mentions.
               </div>
             </div>
           </div>
@@ -695,19 +713,35 @@ cd PHP-Music</code></pre>
               <li><b>Pause & Abort System:</b> Tap **Pause** at any point during a run to freeze the timeline. The overlay lets you immediately **Resume**, trigger an instant **Retry**, or **Quit to Menu** safely.</li>
             </ul>
           </li>
-          <li><b>Image Editor Workspace Guide:</b> Click *Image Editor* in the sidebar to load the canvas playground.
+          <li><b>Image Editor (ImagEditor) Workspace Guide:</b> Click *Image Editor* in the sidebar to load the canvas playground.
             <ul>
               <li><b>Layer Manipulation:</b> Click **Image** to import PNG or JPG files, **Text** to append editable text layers, or **Shape** to render vector shapes. Drag layers to position them, or use the active transform handles to scale, stretch, and rotate layers on a responsive plane.</li>
               <li><b>Property Adjustments:</b> Tap **Settings** (or select a layer) to pull up the Properties Panel. Here, you can change positions, alter opacity levels, adjust rounded corner-radius values, and fine-tune image properties (brightness, contrast, grayscale filters). </li>
-              <li><b>Actions & Exports:</b> Reorder layers (bring forward/send back), toggle flip orientations, duplicate, or delete layers. When ready, click **Export** to save your composite creation to your local drive as a high-resolution `.png` file.</li>
+              <li><b>Brush & Drawing Tools:</b> The **Draw** panel offers multiple brush engines (dip pen, felt tip, airbrush, calligraphy, neon, spray, eraser) with adjustable size, opacity, and glow intensity. Symmetry modes (vertical, horizontal, quad) help create mirrored illustrations.</li>
+              <li><b>Actions & Exports:</b> Reorder layers (bring forward/send back), toggle flip orientations, duplicate, or delete layers. When ready, click **Export** to save your composite creation to your local drive as a high-resolution `.png`, `.jpg`, `.webp`, `.svg`, or save the project as a JSON file for later editing.</li>
+              <li><b>Projects & Templates:</b> Save your projects in the cloud and access them later. The **Design Presets** drawer provides 25+ ready‑to‑use templates (promo banners, quote cards, cyber posters, vintage, minimal, etc.) to jumpstart your creative process.</li>
             </ul>
           </li>
-          <li><b>PHPEditor (IDE) Guide:</b> Access the `PHPEditor (IDE)` from the Admin Panel (`?access=admin&page=ide`).
+          <li><b>PHPAudio – Audio Editing Tool:</b>
             <ul>
-              <li><b>Workspace & File Navigation:</b> Browse server files in the left sidebar explorer. Click any file to open it in a tab. Unsaved changes are marked with an asterisk (`*`).</li>
-              <li><b>Ace Editor:</b> Edit PHP, JS, CSS, HTML, and JSON files with full syntax highlighting, line numbers, and find-and-replace support. Press `Ctrl+S` or click **Save** to write changes back to the server.</li>
-              <li><b>File Version History:</b> View past saved versions of any file in the history sidebar. Click **Restore** to roll back to any historical snapshot.</li>
-              <li><b>Terminal Console:</b> Open the bottom terminal panel to run safe server commands (`git`, `ls`, `pwd`, `whoami`, `php -v`).</li>
+              <li><b>Access:</b> Click **PHPAudio** from the sidebar to open the audio editor workspace.</li>
+              <li><b>Open Audio:</b> Drag and drop or click to browse an audio file (MP3, FLAC, WAV, M4A, OGG, and more). The editor will display a waveform and extract all ID3 metadata.</li>
+              <li><b>Trim & Amplify:</b> Use the sliders to set a start and end point for trimming, and adjust the gain (amplify) to boost or reduce volume.</li>
+              <li><b>Playback Controls:</b> Preview your edits with play/pause, volume control, and playback speed adjustment.</li>
+              <li><b>Edit Metadata:</b> Update title, artist, album, and cover art. The cover can be cropped with a 1:1 aspect ratio.</li>
+              <li><b>Save to Library:</b> Save the edited audio directly to your music library. If you opened a song already in the library, you can save over it or create a new entry. The system updates the database and writes the new ID3 tags into the file.</li>
+              <li><b>Rollback:</b> If you save changes to an existing song, a version history is kept, allowing you to restore the previous version at any time.</li>
+            </ul>
+          </li>
+          <li><b>PHPShares – Artwork & Manga Gallery:</b>
+            <ul>
+              <li><b>Access:</b> The **PHPShares** submenu in the sidebar lets you explore all artworks, illustrations, and manga/comics uploaded by the community.</li>
+              <li><b>Browsing:</b> Filter by **All**, **Illustrations**, **Manga**, or **My Favorites**. Sort by newest, oldest, most viewed, or most favorited. Use the search bar to find specific works by title, tags, characters, or series.</li>
+              <li><b>Upload Artwork:</b> Click **Upload Artwork** in the PHPShares submenu. You can upload multiple images at once (for manga pages), add a title, tags, description, and optionally assign it to a **Series**. Mark it as **NSFW** (18+) if necessary.</li>
+              <li><b>Manga Reader:</b> When viewing a manga/comic, a dedicated reader mode allows you to flip through pages with keyboard arrows (←/→) or by clicking the left/right side of the screen. You can also jump to any page or episode using the episode selector modal.</li>
+              <li><b>Series Management:</b> Group related artworks into series. Each series shows its own page with aggregated metadata (tags, characters, parodies, groups) and a list of all episodes. You can navigate directly from the series page to any episode.</li>
+              <li><b>Favorites & Comments:</b> Like your favorite artworks and leave comments. Comments support markdown, @mentions, and threaded replies.</li>
+              <li><b>Metadata Index:</b> Explore the gallery by tags, characters, parodies, groups, or series via the dedicated index pages accessible from the PHPShares submenu.</li>
             </ul>
           </li>
           <li><b>Listen Later (Bookmark):</b> From any song's 3-dot context menu, select "Listen Later" to save it to your bookmarks. Bookmark icons dynamically alternate states. Drag and drop tracks inside your *Listen Later* tab to manually reorder your queue.</li>
@@ -717,8 +751,8 @@ cd PHP-Music</code></pre>
           <li><b>Direct Messaging & User Search:</b> Access your Inbox to send real-time text and image messages to other users. Search for artists directly within the inbox. See when users were last active and check message read/unread status.</li>
           <li><b>User Blocking:</b> From any user's profile, click the Block icon to instantly prevent them from messaging or following you, automatically severing any mutual follows.</li>
           <li><b>Calendar & Time:</b> Use the Calendar option in the sidebar to open a real-time clock and interactive date-picker, ideal for quick date referencing during music curation.</li>
-          <li><b>Offline Music Mode:</b> Save songs, cover art, and metadata into browser Cache Storage via <b>Make Available Offline</b> in context menus. If files are not fully cached, they dim and cannot be played. Use <b>Re-download Cache</b> to re-cache if needed. If a song is fully offline, use <b>Save File to Device</b> to download it physically from browser storage without using network data. Drag-and-drop to manually reorder offline songs, with dedicated JSON import/export options.</li>
-          <li><b>Audio Customization:</b> Sculpt your sound directly from the Settings panel. Toggle <b>Volume Normalization</b> (Automatic Gain Control) to keep volume levels balanced, or enable the <b>5-band Equalizer</b> to adjust frequency gains (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz).</li>
+          <li><b>Offline Music Mode:</b> Save songs, cover art, and metadata into browser Cache Storage via **Make Available Offline** in context menus. If files are not fully cached, they dim and cannot be played. Use **Re-download Cache** to re-cache if needed. If a song is fully offline, use **Save File to Device** to download it physically from browser storage without using network data. Drag-and-drop to manually reorder offline songs, with dedicated JSON import/export options.</li>
+          <li><b>Audio Customization:</b> Sculpt your sound directly from the Settings panel. Toggle **Volume Normalization** (Automatic Gain Control) to keep volume levels balanced, or enable the **5-band Equalizer** to adjust frequency gains (60Hz, 230Hz, 910Hz, 3.6kHz, 14kHz).</li>
           <li><b>Dynamic Queueing:</b> Click "Play Next" or "Add to Queue" on any track context menu. Scroll down the "Up Next" tab in the player modals (mobile or desktop) to load the queue dynamically with infinite scrolling.</li>
           <li><b>Draggable Sleep Timer:</b> Specify a countdown (in minutes) from your profile dropdown to automatically pause playback when the timer runs out. Displays a draggable floating countdown bubble on active sleep timers, complete with a quick-cancel button.</li>
           <li><b>Collaborative Playlists & Privacy constraints:</b> Toggle your playlist to Collaborative. Open the playlist's 3-dot context menu and select "Manage Collaborators" to invite other users to contribute tracks by entering their exact username or email address. Collaborative track additions display <i>"Added by [User]"</i> inline. Note that private playlists cannot be collaborative, and switching a playlist to private automatically clears out all existing collaborators. Private songs uploaded by you will automatically be stripped from another user's playlist, even if they have collaborative edit permissions.</li>
@@ -755,6 +789,7 @@ cd PHP-Music</code></pre>
               <li><code>offline_songs</code>: Pivot table mapping user-specific offline songs.</li>
               <li><code>listen_later</code>: Stores user bookmarks and position maps.</li>
               <li><code>personal_notes</code>: Stores sandboxed personal notebook content.</li>
+              <li><code>tasks</code>: Stores task lists with JSON items, categories, and starred state.</li>
               <li><code>blogs</code>: Stores blog titles, markdown content, public/private status, category pointers, and unique 8-byte hexadecimal `public_id` handles.</li>
               <li><code>blog_categories</code>: User-defined category mappings for organizing blog posts.</li>
               <li><code>blog_comments</code>: Threaded comment trees for blogs with parent-child nesting.</li>
@@ -770,10 +805,16 @@ cd PHP-Music</code></pre>
               <li><code>follows</code>: Map representing user-to-user and user-to-artist following relationships.</li>
               <li><code>rhythm_scores</code>: Stores personal rhythm game scores, perfect/great/good hit metrics, and maximum combo counts.</li>
               <li><code>rhythm_favorites</code>: Pivot table mapping user-specific favorite game tracks.</li>
+              <li><code>arts</code>, <code>art_files</code>, <code>art_series</code>: PHPShares artwork storage, images, series, and metadata.</li>
+              <li><code>art_comments</code>, <code>art_comment_reactions</code>: Comments and reactions for artworks.</li>
+              <li><code>imageditor_projects</code>: Stores image editor project states (JSON) with title, dimensions, category, and starred status.</li>
             </ul>
           </li>
           <li><b>Audio Streaming & SW:</b> The <code>get_stream</code> endpoint natively handles <code>HTTP_RANGE</code> requests. The Service Worker intercepts streams, caching them in browser Cache Storage and generating custom 206 Partial Content range responses on local buffers for perfect offline seeking.</li>
           <li><b>PHPEditor (IDE):</b> Integrated Ace Editor (`ace.js`) providing dark-mode syntax highlighting for PHP, JS, CSS, HTML, and JSON files, auto-saving buffers, and managing file history snapshots for instant rollbacks via the Drive API.</li>
+          <li><b>ImagEditor:</b> Built on Fabric.js for canvas manipulation. Supports layers, filters (brightness, contrast, saturation, blur, sepia, grayscale, invert), brush tools with symmetry, and exports to PNG, JPEG, WEBP, SVG, or JSON project files.</li>
+          <li><b>PHPAudio:</b> Uses the Web Audio API for decoding and waveform rendering. Trimming uses the AudioBuffer API. Metadata writing uses getID3's write functions. File versioning stored in `.file_version/` directories.</li>
+          <li><b>PHPShares:</b> Uploaded images are stored in `phpshares/uid_*/` with thumbnails. Series grouping, tags, and metadata are indexed in the database. The manga reader uses lazy loading for pages.</li>
         </ul>
         
         <a id="admin"></a>
@@ -787,6 +828,14 @@ cd PHP-Music</code></pre>
           <li><b>System Library Context:</b> Tracks scanned directly from the host disk are assigned to a virtual administrator account named "Music Library" (ID dynamically resolved).</li>
           <li><b>Drive Manager:</b> An integrated file manager for server assets (<code>?access=admin&page=drive</code>). Features include native <code>.zip</code> extraction via context menus, dynamic URL deep linking for active files, an optimized 2-column mobile grid, and recursive folder property calculations (displaying total files, subdirectories, and byte size).</li>
           <li><b>PHPEditor (IDE):</b> A browser-based code editing suite (<code>?access=admin&page=ide</code>) featuring a file tree explorer, multi-tab Ace Editor, version history rollback, media viewer, and an interactive terminal console (`git`, `ls`, `pwd`, `php -v`).</li>
+          <li><b>PHPDBManager:</b> A web-based SQLite database manager (<code>?access=admin&page=dbmanager</code>) for browsing tables, running SQL queries, inserting/updating/deleting rows, exporting/importing CSV or SQL dumps, managing indexes and foreign keys, and performing maintenance (VACUUM, integrity check).</li>
+          <li><b>Song Management:</b> List, search, bulk edit, ban/unban, and soft/permanent delete songs. Transfer ownership between users.</li>
+          <li><b>Artwork Management:</b> Manage uploaded artwork (PHPShares) with metadata editing, bulk actions, and permanent deletion with file cleanup.</li>
+          <li><b>Activity Logs:</b> View a chronological list of all admin actions performed, including user and target details.</li>
+          <li><b>Profile Reports:</b> Manage user reports submitted by other users, with options to ban or dismiss.</li>
+          <li><b>Ban Appeals:</b> Review and approve/reject appeals from banned users, with ability to restore access.</li>
+          <li><b>API Keys:</b> Manage system-wide API keys for developer integrations. Generate, verify, ban/unban, and delete keys.</li>
+          <li><b>Storage Stats:</b> Visual breakdown of disk usage, audio files, non-audio assets, and per-user storage footprint with charts.</li>
         </ul>
         
         <a id="api"></a>
@@ -1127,6 +1176,76 @@ cd PHP-Music</code></pre>
                 <td>GET</td>
                 <td>Retrieves the complete list of favorited rhythm game track IDs mapped to the user.</td>
               </tr>
+              <tr>
+                <td><code>upload_art</code></td>
+                <td>POST</td>
+                <td>Uploads artwork images (single or multiple) with metadata, tags, series, and NSFW flag. Stores files in `phpshares/`.</td>
+              </tr>
+              <tr>
+                <td><code>get_arts</code></td>
+                <td>GET</td>
+                <td>Fetches a paginated list of artworks with filtering by type (image/manga), search, tags, characters, etc.</td>
+              </tr>
+              <tr>
+                <td><code>get_art</code></td>
+                <td>GET</td>
+                <td>Retrieves a single artwork with all its files, comments, and metadata.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_art_favorite</code></td>
+                <td>POST</td>
+                <td>Adds/removes an artwork from the user's favorites.</td>
+              </tr>
+              <tr>
+                <td><code>add_art_comment</code> / <code>edit_art_comment</code> / <code>delete_art_comment</code></td>
+                <td>POST</td>
+                <td>CRUD operations on artwork comments with nested replies.</td>
+              </tr>
+              <tr>
+                <td><code>get_arts_explore</code></td>
+                <td>GET</td>
+                <td>Returns popular tags and trending artworks/manga for the explore page.</td>
+              </tr>
+              <tr>
+                <td><code>get_series_details</code></td>
+                <td>GET</td>
+                <td>Fetches a series with its aggregated metadata and list of works.</td>
+              </tr>
+              <tr>
+                <td><code>save_imageditor_project</code></td>
+                <td>POST</td>
+                <td>Saves an image editor project (title, dimensions, state JSON, category, starred) to the database.</td>
+              </tr>
+              <tr>
+                <td><code>get_imageditor_projects</code></td>
+                <td>GET</td>
+                <td>Lists the user's saved image editor projects with filtering and search.</td>
+              </tr>
+              <tr>
+                <td><code>toggle_imageditor_star</code></td>
+                <td>POST</td>
+                <td>Toggles starred status on an image editor project.</td>
+              </tr>
+              <tr>
+                <td><code>delete_imageditor_project</code></td>
+                <td>POST</td>
+                <td>Deletes a saved image editor project.</td>
+              </tr>
+              <tr>
+                <td><code>inspect_audio</code></td>
+                <td>POST</td>
+                <td>Uploads an audio file temporarily and returns its getID3 metadata (format, bitrate, duration, etc.) for the PHPAudio editor.</td>
+              </tr>
+              <tr>
+                <td><code>save_audio_editor</code></td>
+                <td>POST</td>
+                <td>Saves an edited audio file (including trimmed clip, metadata, cover art) to the library. Supports creating new or updating existing songs.</td>
+              </tr>
+              <tr>
+                <td><code>get_song_versions</code> / <code>restore_song_version</code></td>
+                <td>POST</td>
+                <td>Fetches version history for a song and restores a previous version.</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1203,6 +1322,30 @@ cd PHP-Music</code></pre>
             <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
               <div class="accordion-body">
                 Collaborative Playlists let you invite specific users by email or display name to edit a playlist. Note that the "Manage Collaborators" button in the playlist context menu is strictly visible only when the playlist is set to Collaborative. If you change a playlist's status back to Private, all invited collaborators and their contribution permissions are automatically deleted from the database.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                PHPShares images not loading
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Ensure the <code>phpshares/</code> directory is writable and has proper permissions. Check that GD or ImageMagick is installed and enabled in PHP for image processing. Large images may time out; consider increasing <code>memory_limit</code> and <code>max_execution_time</code> in <code>php.ini</code>.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                Image Editor layers not showing or canvas blank
+              </button>
+            </h2>
+            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Check the browser console for JavaScript errors. Fabric.js may fail to load if there are network issues. Ensure you have enough memory in the browser; large images may cause the canvas to be blank. Try resetting the canvas or loading a smaller image.
               </div>
             </div>
           </div>
